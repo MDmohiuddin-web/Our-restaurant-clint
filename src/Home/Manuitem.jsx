@@ -9,7 +9,7 @@ const Manuitem = ({item}) => {
                 <h3 className="md:text-2xl font-bold ">{name} .......</h3>
                 <p>{recipe}</p>
             </div>
-            <p className="text-[#D99904] flex "> {price} $</p>
+            <p className="text-[#D99904] flex font-bold"> {price} $</p>
             
         </div>
     );
