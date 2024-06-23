@@ -5,6 +5,7 @@ import Cardcheprecomendet from "./Cardcheprecomendet";
 import inn from '../assets/Resources/home/featured.jpg';
 
 import Populermenu from "./Populermenu";
+import Reviewcard from "./Reviewcard";
 
 const Home = () => {
   return (
@@ -87,7 +88,12 @@ const Home = () => {
             <Link className="btn hover:bg-white hover:text-black bg-transparent px-5 py-2 btn-ghost border-b-2 border-b-white">Read More</Link>
           </div>
         </div>
+       
       </div>
+     
+      <Reviewcard></Reviewcard>
+
+
     </div>
   );
 };

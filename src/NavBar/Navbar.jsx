@@ -90,7 +90,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
         {/*  */}
-        <div className="flex gap-5">
+        <div className="flex gap-5 text-black">
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -151,7 +151,7 @@ const Navbar = () => {
               <li>
                 <a className="justify-between">
                   Profile
-                  <span className="badge">New</span>
+                  {/* <span className="badge">New</span> */}
                 </a>
               </li>
               <li>

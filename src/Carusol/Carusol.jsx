@@ -36,7 +36,7 @@ const Carusol = () => {
                     <img src={img6} />
                     {/* <p className="legend">Legend 3</p> */}
                 </div>
-            </Carousel>
+        </Carousel>
     );
 };
 
