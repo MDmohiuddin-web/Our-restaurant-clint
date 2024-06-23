@@ -56,7 +56,7 @@ const Footer = () => {
       </div>
       </div>
 {/* dent tach */}
-      <div className="footer footer-center p-4 bg-base-300 text-base-content">
+      <div className="footer footer-center p-4 bg-black text-white">
         <aside>
           <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
         </aside>

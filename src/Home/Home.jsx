@@ -11,12 +11,7 @@ const Home = () => {
   return (
     <div>
       <Carusol></Carusol>
-      <div className="md:w-1/3 m-auto p-5 text-center">
-        <p className="text-[#D99904] text-xl">---From 11:00am to 10:00pm---</p>
-        <h2 className="border-y-2 text-2xl border-gray-400 my-5 py-5">
-          ORDER ONLINE
-        </h2>
-      </div>
+      
       <Sy></Sy>
 
       <div className="md:w-4/5 m-auto my-10 bg md:h-96 flex justify-center items-center rounded-lg p-10">
@@ -45,12 +40,7 @@ const Home = () => {
         <h2 className=" text-xl md:text-6xl">Call Us: +88 0192345678910</h2>
       </div>
       {/*  */}
-      <div className="md:w-1/3 m-auto p-5 text-center">
-        <p className="text-[#D99904] text-xl">---Should Try---</p>
-        <h2 className="border-y-2 text-2xl border-gray-400 my-5 py-5">
-          CHEF RECOMMENDS
-        </h2>
-      </div>
+      
       {/*  */}
       <Cardcheprecomendet></Cardcheprecomendet>
 

@@ -16,13 +16,13 @@ const Navbar = () => {
         <NavLink to="/" className="hover:text-yellow-400">Home </NavLink>
       </li>
       <li className="hover:text-my_color-400">
+        <NavLink to="/OurMenu" className="hover:text-yellow-400">OurMenu</NavLink>
+      </li>
+      <li className="hover:text-my_color-400">
         <NavLink to="/ContactUs" className="hover:text-yellow-400">Contact Us</NavLink>
       </li>
       <li className="hover:text-my_color-400">
         <NavLink to="/DashBoard" className="hover:text-yellow-400">DashBoard</NavLink>
-      </li>
-      <li className="hover:text-my_color-400">
-        <NavLink to="/OurMenu" className="hover:text-yellow-400">OurMenu</NavLink>
       </li>
       <li className="hover:text-my_color-400">
         <NavLink to="/OurShop" className="hover:text-yellow-400">OurShop</NavLink>

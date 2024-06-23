@@ -10,6 +10,13 @@
     background-position: center;
     
 }
+.OURMENUIMG{
+    background-image: url('/src/assets/Resources/menu/OURMENU.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
 .bg_img{
    background-image: url('/src/assets/Resources/others/aa.png');
     background-size: cover;
