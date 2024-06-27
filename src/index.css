@@ -24,3 +24,10 @@
     background-position: center;
     
 }
+.OurShop_img{
+   background-image: url('/src/assets/Resources/shop/banner2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
