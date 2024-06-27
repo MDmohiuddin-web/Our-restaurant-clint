@@ -1,6 +1,7 @@
 
 
-const Manuitem = ({item}) => {
+
+const PizzaCards = ({item}) => {
     const {name,image,recipe,price}=item;
     return (
         <div className="md:w-[49%] my-5 m-auto gap-5 flex  bg-white p-2 rounded-lg shadow-lg justify-center items-center">
@@ -15,4 +16,4 @@ const Manuitem = ({item}) => {
     );
 };
 
-export default Manuitem;
+export default PizzaCards;
