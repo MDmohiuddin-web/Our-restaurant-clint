@@ -1,6 +1,18 @@
 import Populermenu from "../Home/Populermenu";
 
 const OurMenu = () => {
+
+  // const [popular, setPopular] = useState([]);
+
+  // useEffect(() => {
+  //   fetch("menu.json")
+  //     .then((res) => res.json())
+  //     .then((data) =>
+  //       setPopular(data.filter((item) => item.category === "popular"))
+  //     );
+  // }, []);
+
+
   return (
     <div>
         {/*  */}

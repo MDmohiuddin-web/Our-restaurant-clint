@@ -1,23 +1,28 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+
+import UseMenu from "../Hooks/UseMenu";
 import Manuitem from "./Manuitem";
 import { Link } from "react-router-dom";
 
 const Populermenu = () => {
-  const [popular, setPopular] = useState([]);
+  // const [popular, setPopular] = useState([]);
 
-  useEffect(() => {
-    fetch("menu.json")
-      .then((res) => res.json())
-      .then((data) =>
-        setPopular(data.filter((item) => item.category === "popular"))
-      );
-  }, []);
+  // useEffect(() => {
+  //   fetch("menu.json")
+  //     .then((res) => res.json())
+  //     .then((data) =>
+  //       setPopular(data.filter((item) => item.category === "popular"))
+  //     );
+  // }, []);
+
+  // data coll form castom hook name is UseMenu()
+  const [menu] = UseMenu();
+  const popular = menu.filter((item) => item.category === "popular");
 
   return (
     <div className="my-10">
-      
-
       <div className="md:w-[80%] m-auto flex flex-wrap gap-5 ">
+        {/* <h2>{popular.length}</h2> */}
         {popular.map((item) => (
           <Manuitem key={item._id} item={item}></Manuitem>
         ))}
