@@ -17,6 +17,7 @@ const Cardcheprecomendet = () => {
         <div className="card w-96 bg-base-100 shadow-xl">
           <figure>
             <img src={im} className="w-full h-60 object-cover" alt="Shoes" />
+            
           </figure>
           <div className="card-body items-center text-center mt-5">
             <h2 className="card-title ">Caeser Salad</h2>

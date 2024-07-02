@@ -1,4 +1,16 @@
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import UseMenu from "../Hooks/UseMenu";
+import FoodCard from "./Foodscards/FoodCard";
+
 const OurShop = () => {
+  const [menu] = UseMenu();
+  const drinks = menu.filter((item) => item.category === "drinks");
+  const soup = menu.filter((item) => item.category === "soup");
+  const salad = menu.filter((item) => item.category === "salad");
+  const dessert = menu.filter((item) => item.category === "dessert");
+  const pizza = menu.filter((item) => item.category === "pizza");
+
   return (
     <div>
       {/*  */}
@@ -8,49 +20,64 @@ const OurShop = () => {
           <p className="text-gray-50">Would you like to try a dish?</p>
         </div>
       </div>
+
       {/*  */}
-      <div className="md:w-4/5 m-auto p-5 text-center">
-        <nav class="text-black bg-white  ">
-          <div class="text-black container flex items-center justify-center p-6 mx-auto capitalize ">
-            <a
-              href="#"
-              class="text-black  transition-colors duration-300 transform  border-b-2 border-yellow-500 mx-1.5 sm:mx-6 hover:text-yellow-500 "
-            >
-              Salad
-            </a>
 
-            <a
-              href="#"
-              class="text-black border-b-2 border-transparent  transition-colors duration-300 transform  hover:border-yellow-500 mx-1.5 sm:mx-6 hover:text-yellow-500 "
-            >
-              pizza
-            </a>
+      <Tabs className="md:w-4/5 m-auto p-5 text-center ">
+        <TabList>
+          <Tab>Salad</Tab>
+          <Tab>pizza</Tab>
+          <Tab>soups</Tab>
+          <Tab>desserts</Tab>
+          <Tab>drinks</Tab>
+        </TabList>
 
-            <a
-              href="#"
-              class="text-black border-b-2 border-transparent  transition-colors duration-300 transform  hover:border-yellow-500 mx-1.5 sm:mx-6 hover:text-yellow-500 "
-            >
-             soups
-            </a>
-
-            <a
-              href="#"
-              class="text-black   border-b-2 border-transparent  transition-colors duration-300 transform  hover:border-yellow-500 mx-1.5 sm:mx-6 hover:text-yellow-500 "
-            >
-              desserts
-            </a>
-            <a
-              href="#"
-              class="text-black   border-b-2 border-transparent  transition-colors duration-300 transform  hover:border-yellow-500 mx-1.5 sm:mx-6 hover:text-yellow-500 "
-            >
-              drinks
-            </a>
-
-            
+        <TabPanel >
+          <div className="gap-5 flex flex-wrap justify-center items-center">
+            {
+            salad.map(item=><FoodCard item={item} key={item._id}></FoodCard>)
+          }
           </div>
-        </nav>
-        {/*  */}
-      </div>
+          
+        </TabPanel>
+        <TabPanel >
+          <div className="gap-5 flex flex-wrap justify-center items-center">
+            {
+            pizza.map(item=><FoodCard item={item} key={item._id}></FoodCard>)
+          }
+          </div>
+          
+        </TabPanel>
+        <TabPanel >
+          <div className="gap-5 flex flex-wrap justify-center items-center">
+            {
+            dessert.map(item=><FoodCard item={item} key={item._id}></FoodCard>)
+          }
+          </div>
+          
+        </TabPanel>
+        <TabPanel >
+          <div className="gap-5 flex flex-wrap justify-center items-center">
+            {
+            soup.map(item=><FoodCard item={item} key={item._id}></FoodCard>)
+          }
+          </div>
+          
+        </TabPanel>
+        <TabPanel >
+          <div className="gap-5 flex flex-wrap justify-center items-center">
+            {
+            drinks.map(item=><FoodCard item={item} key={item._id}></FoodCard>)
+          }
+          </div>
+          
+        </TabPanel>
+
+        
+
+      </Tabs>
+
+      {/*  */}
     </div>
   );
 };
