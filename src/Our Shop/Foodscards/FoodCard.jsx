@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
 
 
+
 const FoodCard = ({item}) => {
+
     const {name,image,recipe,price}=item;
     // 
     return (
         <div className="card max-w-[300px]  bg-base-100 shadow-xl">
           <figure>
             <img src={image} className="w-full h-60 object-cover " alt="Shoes" />
-            <p className="p-3 text-right bg-black text-white absolute right-0 top-5 rounded-l-lg">${price}</p>
+            <p className="p-2 text-right bg-black text-white absolute right-0 top-5 rounded-l-lg">${price}</p>
             
             
           </figure>
-          <div className="card-body items-center text-center mt-5 h-[300px]">
+          <div className="card-body items-center text-center mt-5 h-[280px]">
             <h2 className="card-title ">{name}</h2>
             <p>{recipe}</p>
 

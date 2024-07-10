@@ -17,7 +17,8 @@ import { useEffect, useState } from "react";
 const Reviewcard = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("../../public/review.json")
+    // fetch("review.json")
+    fetch("http://localhost:4050/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
