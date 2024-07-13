@@ -1,5 +1,5 @@
 import React from 'react';
-import UseMenu from '../Hooks/UseMenu';
+import UseMenu from '../../Hooks/UseMenu';
 import { Link } from 'react-router-dom';
 import PizzaCards from './PizzaCards';
 

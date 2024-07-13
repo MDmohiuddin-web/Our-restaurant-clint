@@ -1,6 +1,6 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import UseMenu from "../Hooks/UseMenu";
+import UseMenu from "../../Hooks/UseMenu";
 import FoodCard from "./Foodscards/FoodCard";
 
 // Import Swiper React components

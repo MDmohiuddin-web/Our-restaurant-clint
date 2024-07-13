@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import UseMenu from "../../Hooks/UseMenu";
+import UseMenu from "../../../Hooks/UseMenu";
 
 import DessertCards from "./DessertCards";
 
