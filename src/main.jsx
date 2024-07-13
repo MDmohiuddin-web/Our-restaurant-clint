@@ -9,8 +9,8 @@ import ContactUs from "./CONTACT Us/ContactUs";
 import OurMenu from "./Our Menu/OurMenu";
 import OurShop from "./Our Shop/OurShop";
 import D_Bord from "./DASHBOARD/D_Bord";
-
-
+import Signin from "./signinorregister/Signin";
+import Sigup from "./signinorregister/Sigup";
 
 const router = createBrowserRouter([
   {
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:'/ContactUs',
-        element:<ContactUs></ContactUs>
+        path: "/ContactUs",
+        element: <ContactUs></ContactUs>,
       },
       {
         path: "/OurMenu",
@@ -35,9 +35,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/DashBoard",
-        element:<D_Bord></D_Bord>
-      }
-      
+        element: <D_Bord></D_Bord>,
+      },
+      {
+        path: "/signin",
+        element: <Signin></Signin>,
+      },
+      {
+        path: "/Sigup",
+        element: <Sigup></Sigup>,
+      },
     ],
   },
 ]);

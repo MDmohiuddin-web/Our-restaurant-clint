@@ -29,9 +29,9 @@ const Navbar = () => {
       </li>
      
 
-      {/* <li className="hover:text-my_color-400">
-          <NavLink to="/signup">sign up</NavLink>
-        </li> */}
+      <li className="hover:text-my_color-400">
+          <NavLink to="/signin">sign in</NavLink>
+        </li>
 
       {/* i dent need it  */}
       {/* {user?.email ? (
