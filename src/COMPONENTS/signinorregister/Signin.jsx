@@ -125,7 +125,7 @@ const Signin = () => {
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
             <Link
-              to='/Sigup'
+              to='/Signup'
               className="text-xs text-black uppercase  hover:underline"
             >
               or sign up
