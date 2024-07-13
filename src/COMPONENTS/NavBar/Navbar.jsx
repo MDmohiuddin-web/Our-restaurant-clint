@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import navlogo from "../assets/Resources/nav-logo.svg";
+// import navlogo from "../assets/Resources/nav-logo.svg";
+import navlogo from "../../assets/Resources/nav-logo.svg";
 const Navbar = () => {
   // const { user, sinout } = useContext(AuthContext);
   // const logout = () => {

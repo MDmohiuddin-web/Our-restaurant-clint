@@ -3,14 +3,17 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Home from "./COMPONENTS/Home/Home";
+import ContactUs from "./COMPONENTS/CONTACT Us/ContactUs";
+import OurMenu from "./COMPONENTS/Our Menu/OurMenu";
+import OurShop from "./COMPONENTS/Our Shop/OurShop";
+import D_Bord from "./COMPONENTS/DASHBOARD/D_Bord";
 import Root from "./ROOT/Root";
-import Home from "./Home/Home";
-import ContactUs from "./CONTACT Us/ContactUs";
-import OurMenu from "./Our Menu/OurMenu";
-import OurShop from "./Our Shop/OurShop";
-import D_Bord from "./DASHBOARD/D_Bord";
-import Signin from "./signinorregister/Signin";
-import Sigup from "./signinorregister/Sigup";
+import Signin from "./COMPONENTS/signinorregister/Signin";
+import Sigup from "./COMPONENTS/signinorregister/Sigup";
+
+
 
 const router = createBrowserRouter([
   {
@@ -22,8 +25,8 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/ContactUs",
-        element: <ContactUs></ContactUs>,
+        path:'/ContactUs',
+        element:<ContactUs></ContactUs>
       },
       {
         path: "/OurMenu",
@@ -35,16 +38,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/DashBoard",
-        element: <D_Bord></D_Bord>,
+        element:<D_Bord></D_Bord>
       },
       {
         path: "/signin",
         element: <Signin></Signin>,
       },
       {
-        path: "/Sigup",
-        element: <Sigup></Sigup>,
-      },
+        path:'/Sigup',
+        element:<Sigup></Sigup>
+      }
+      
     ],
   },
 ]);

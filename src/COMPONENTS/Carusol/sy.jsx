@@ -6,11 +6,11 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import img1 from "../assets/Resources/home/slide1.jpg";
-import img2 from "../assets/Resources/home/slide2.jpg";
-import img3 from "../assets/Resources/home/slide3.jpg";
-import img4 from "../assets/Resources/home/slide4.jpg";
-import img5 from "../assets/Resources/home/slide5.jpg";
+import img1 from "../../assets/Resources/home/slide1.jpg";
+import img2 from "../../assets/Resources/home/slide2.jpg";
+import img3 from "../../assets/Resources/home/slide3.jpg";
+import img4 from "../../assets/Resources/home/slide4.jpg";
+import img5 from "../../assets/Resources/home/slide5.jpg";
 
 const Sy = () => {
   return (

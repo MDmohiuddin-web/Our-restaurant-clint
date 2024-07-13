@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import Carusol from "../Carusol/Carusol";
+
+import  Carusol from '../Carusol/Carusol' 
 import Sy from "../Carusol/sy";
 import Cardcheprecomendet from "./Cardcheprecomendet";
-import inn from '../assets/Resources/home/featured.jpg';
+import inn from '../../assets/Resources/home/featured.jpg';
 
 import Populermenu from "./Populermenu";
 import Reviewcard from "./Reviewcard";

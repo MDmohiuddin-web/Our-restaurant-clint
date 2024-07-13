@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import im from "../assets/Resources/home/slide1.jpg";
+import im from "../../assets/Resources/home/slide1.jpg";
 
 const Cardcheprecomendet = () => {
   return (

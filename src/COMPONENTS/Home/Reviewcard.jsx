@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import nota from "../assets/Resources/notition.svg";
+import nota from "../../assets/Resources/notition.svg";
 
 
 import { Rating } from '@smastrom/react-rating'
