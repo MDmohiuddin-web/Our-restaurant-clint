@@ -12,8 +12,7 @@ import D_Bord from "./COMPONENTS/DASHBOARD/D_Bord";
 import Root from "./ROOT/Root";
 import Signin from "./COMPONENTS/signinorregister/Signin";
 import Sigup from "./COMPONENTS/signinorregister/Sigup";
-
-
+import AuthProvider from "./AuthContext/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +24,8 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:'/ContactUs',
-        element:<ContactUs></ContactUs>
+        path: "/ContactUs",
+        element: <ContactUs></ContactUs>,
       },
       {
         path: "/OurMenu",
@@ -38,23 +37,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/DashBoard",
-        element:<D_Bord></D_Bord>
+        element: <D_Bord></D_Bord>,
       },
       {
-        path: "/signin",
+        path: "/Login",
         element: <Signin></Signin>,
       },
       {
-        path:'/Signup',
-        element:<Sigup></Sigup>
-      }
-      
+        path: "/Signup",
+        element: <Sigup></Sigup>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
