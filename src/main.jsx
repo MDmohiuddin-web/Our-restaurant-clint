@@ -13,6 +13,7 @@ import Root from "./ROOT/Root";
 import Signin from "./COMPONENTS/signinorregister/Signin";
 import Sigup from "./COMPONENTS/signinorregister/Sigup";
 import AuthProvider from "./AuthContext/AuthProvider";
+import Profile from "./COMPONENTS/signinorregister/Profile";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/Signup",
         element: <Sigup></Sigup>,
+      },
+      {
+        path: "/Profile",
+        element: <Profile></Profile>,
       },
     ],
   },

@@ -1,13 +1,14 @@
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha, } from 'react-simple-captcha';
 import { Link } from 'react-router-dom';
-import { useEffect,  useState,  } from 'react';
+import { useContext, useEffect,  useState,  } from 'react';
+import { AuthContext } from '../../AuthContext/AuthProvider';
 
 
 
 
 const Signin = () => {
-  
+  const {signin,googleSignIn}=useContext(AuthContext)
 
   const [disabled, setDisable] = useState(true);
   
@@ -19,15 +20,28 @@ const Signin = () => {
 
 
 
-    const handleSubmit=()=>{
+    const handleSubmit=(e)=>{
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email,password);
+        signin(email,password)
+        .then((res) => {
+            console.log(res);
+            alert("User login successfully");
+          })
+        .then((error) => console.error(error));si
 
         
     }
+    const handleGoogleSignIn = () => {
+      googleSignIn()
+        .then((res) => {
+          console.log(res);
+        })
+        .then((error) => console.error(error));
+    };
 
 
     const handleValidateCaptcha = (e) => {
@@ -35,7 +49,7 @@ const Signin = () => {
       console.log(user_captcha_value);
       if (validateCaptcha(user_captcha_value)) {
           setDisable(false);
-          alert("Captcha matched");
+          // alert("Captcha matched");
       } else {
           setDisable(true);
          alert("Captcha did not match");
@@ -54,16 +68,15 @@ const Signin = () => {
          
         ></div>
 
-        <form className="w-full px-6 py-8 md:px-8 lg:w-1/2" onSubmit={handleSubmit}>
-          {/* <div className="flex justify-center mx-auto">
-            
-          </div> */}
+        <div className="w-full px-6 py-8 md:px-8 lg:w-1/2" >
+          
 
           <p className="mt-3 text-xl text-center text-black ">
           Login
           </p>
 
-          <a
+          <div 
+          onClick={handleGoogleSignIn}
             href="#"
             className="flex items-center justify-center mt-4 text-black transition-colors duration-300 transform border rounded-lg dark:border-gray-700  hover:bg-gray-50 dark:hover:bg-gray-600"
           >
@@ -91,7 +104,7 @@ const Signin = () => {
             <span className="w-5/6 px-4 py-3 font-bold text-center hover:text-white">
               Sign in with Google
             </span>
-          </a>
+          </div>
 
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
@@ -106,7 +119,7 @@ const Signin = () => {
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
           </div>
 
-          
+          <form onSubmit={handleSubmit}>
           <div className="mt-4">
             <label
               className="block mb-2 text-sm font-medium text-black "
@@ -198,7 +211,8 @@ const Signin = () => {
 
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
           </div>
-        </form>
+          </form>
+        </div>
       </div>
       </div>
     );

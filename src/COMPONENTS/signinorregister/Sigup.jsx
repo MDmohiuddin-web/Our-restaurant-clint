@@ -1,9 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 
 const Sigup = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser ,googleSignIn } = useContext(AuthContext);
+  // const navigate = useNavigate();
+  // const location=useLocation();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -14,27 +17,37 @@ const Sigup = () => {
     console.log(name, email, password);
     createUser(email, password)
     .then((res) => {
+        // navigate("/");
+        alert("User created successfully");
         console.log(res);
       })
-     .then((error) => console.error(error));
+    .then((error) => console.error(error));
+  };
+
+// for google sign in
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then((res) => {
+        console.log(res);
+      })
+    .then((error) => console.error(error));
   };
 
   return (
     <div className="flex w-full mb-10 max-w-sm mx-auto py-20  overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl">
-      <div className="hidden bg-cover lg:block lg:w-1/2 userauth rounded-md"></div>
+      <div className="hidden bg-cover lg:block lg:w-1/2 userauth rounded-md">
+      </div>
 
-      <form
+      <div
         className="w-full px-6 py-8 md:px-8 lg:w-1/2"
-        onSubmit={handleSubmit}
-      >
-        {/* <div className="flex justify-center mx-auto">
         
-      </div> */}
+      >
+        
 
         <p className="mt-3 text-xl text-center text-black ">Sign Up</p>
 
-        <a
-          href="#"
+        <div
+          onClick={handleGoogleSignIn}
           className="flex items-center justify-center mt-4 text-black transition-colors duration-300 transform border rounded-lg dark:border-gray-700  hover:bg-gray-50 dark:hover:bg-gray-600"
         >
           <div className="px-4 py-2">
@@ -61,7 +74,8 @@ const Sigup = () => {
           <span className="w-5/6 px-4 py-3 font-bold text-center hover:text-white">
             Sign up with Google
           </span>
-        </a>
+        </div>
+
 
         <div className="flex items-center justify-between mt-4">
           <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
@@ -75,7 +89,11 @@ const Sigup = () => {
 
           <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
         </div>
-        <div className="mt-4">
+        {/*  */}
+       <form 
+       onSubmit={handleSubmit}
+        >
+       {/* <div className="mt-4">
           <label
             className="block mb-2 text-sm font-medium text-black "
             for="LoggingEmailAddress"
@@ -90,7 +108,7 @@ const Sigup = () => {
             className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
             type="text"
           />
-        </div>
+        </div> */}
 
         <div className="mt-4">
           <label
@@ -117,12 +135,7 @@ const Sigup = () => {
             >
               Password
             </label>
-            {/* <a
-            href="#"
-            className="text-xs text-black  hover:underline"
-          >
-            Forget Password?
-          </a> */}
+            
           </div>
 
           <input
@@ -140,7 +153,6 @@ const Sigup = () => {
             Sign Up
           </button>
         </div>
-
         <div className="flex items-center justify-between mt-4">
           <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
@@ -153,7 +165,10 @@ const Sigup = () => {
 
           <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
         </div>
-      </form>
+       </form>
+
+        
+      </div>
     </div>
   );
 };
