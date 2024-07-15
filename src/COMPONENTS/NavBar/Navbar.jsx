@@ -3,11 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import navlogo from "../../assets/Resources/nav-logo.svg";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 const Navbar = () => {
   const {user,  logOut } = useContext(AuthContext)
   const logout = () => {
     logOut()
       .then(() => {
+        toast.warn("sign out success full");
         window.location.reload();
       })
       .catch((error) => console.error(error));
@@ -143,7 +145,10 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  title={user?.displayName}
+                  src={user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"}
+
+                  
                 />
               </div>
             </div>

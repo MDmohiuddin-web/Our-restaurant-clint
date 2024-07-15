@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 
 const Sigup = () => {
-  const { createUser ,googleSignIn } = useContext(AuthContext);
+  const { createUser, googleSignIn ,updateUserProfile} = useContext(AuthContext);
   // const navigate = useNavigate();
   // const location=useLocation();
 
@@ -16,34 +16,34 @@ const Sigup = () => {
     const password = form.password.value;
     console.log(name, email, password);
     createUser(email, password)
-    .then((res) => {
+      .then((res) => {
         // navigate("/");
-        alert("User created successfully");
-        console.log(res);
+        updateUserProfile(name, Photo);
+        // Signed in
+        const user = rec.user;
+        console.log(user);
+        navigate(location?.state || "/");
+        toast.success("signup success full");
+        window.location.reload();
       })
-    .then((error) => console.error(error));
+      .then((error) => console.error(error));
   };
 
-// for google sign in
+  // for google sign in
   const handleGoogleSignIn = () => {
     googleSignIn()
-    .then((res) => {
+      .then((res) => {
         console.log(res);
       })
-    .then((error) => console.error(error));
+      .then((error) => console.error(error));
   };
 
   return (
-    <div className="flex w-full mb-10 max-w-sm mx-auto py-20  overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl">
-      <div className="hidden bg-cover lg:block lg:w-1/2 userauth rounded-md">
-      </div>
+    <div className="flex w-full mb-10 max-w-sm mx-auto py-20  overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
+      {/* for img */}
+      <div className="hidden bg-cover lg:block lg:w-1/2 userauth rounded-md"></div>
 
-      <div
-        className="w-full px-6 py-8 md:px-8 lg:w-1/2"
-        
-      >
-        
-
+      <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
         <p className="mt-3 text-xl text-center text-black ">Sign Up</p>
 
         <div
@@ -76,7 +76,6 @@ const Sigup = () => {
           </span>
         </div>
 
-
         <div className="flex items-center justify-between mt-4">
           <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
 
@@ -90,69 +89,61 @@ const Sigup = () => {
           <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
         </div>
         {/*  */}
-       <form 
-       onSubmit={handleSubmit}
-        >
-       {/* <div className="mt-4">
-          <label
-            className="block mb-2 text-sm font-medium text-black "
-            for="LoggingEmailAddress"
-          >
-            Name
-          </label>
-          <input
-            required
-            name="name"
-            placeholder="Name"
-            id="Name"
-            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-            type="text"
-          />
-        </div> */}
 
-        <div className="mt-4">
-          <label
-            className="block mb-2 text-sm font-medium text-black "
-            for="LoggingEmailAddress"
-          >
-            Email Address
-          </label>
-          <input
-            required
-            name="email"
-            placeholder="Email Address"
-            id="LoggingEmailAddress"
-            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-            type="email"
-          />
-        </div>
-
-        <div className="mt-4">
-          <div className="flex justify-between">
+        {/*  */}
+        <form onSubmit={handleSubmit}>
+          <div className="mt-4">
             <label
               className="block mb-2 text-sm font-medium text-black "
-              for="loggingPassword"
+              
             >
-              Password
+              Name
             </label>
-            
+            <input
+              required
+              name="name"
+              placeholder="Name"
+              id="Name"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              type="text"
+            />
           </div>
 
-          <input
-            required
-            name="password"
-            placeholder="Password"
-            id="loggingPassword"
-            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-            type="password"
-          />
-        </div>
+          <div className="mt-4">
+            <label className="block mb-2 text-sm font-medium text-black ">
+              Email Address
+            </label>
+            <input
+              name="email"
+              placeholder="Email Address"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              type="email"
+            />
+          </div>
 
-        <div className="mt-6">
-          <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-            Sign Up
-          </button>
-        </div>
+          <div className="mt-4">
+            <div className="flex justify-between">
+              <label className="block mb-2 text-sm font-medium text-black ">
+                Password
+              </label>
+              
+            </div>
+
+            <input
+              placeholder="password"
+              name="password"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              type="password"
+            />
+          </div>
+
+          <div className="mt-6">
+            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+              Sign Up
+            </button>
+          </div>
+        </form>
+
         <div className="flex items-center justify-between mt-4">
           <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
@@ -165,9 +156,6 @@ const Sigup = () => {
 
           <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
         </div>
-       </form>
-
-        
       </div>
     </div>
   );
