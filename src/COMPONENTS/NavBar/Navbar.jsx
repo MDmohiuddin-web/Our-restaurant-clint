@@ -5,7 +5,7 @@ import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 const Navbar = () => {
-  const {user,  logOut } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
   const logout = () => {
     logOut()
       .then(() => {
@@ -18,39 +18,42 @@ const Navbar = () => {
   const links = (
     <>
       <li className="hover:text-my_color-400">
-        <NavLink to="/" className="hover:text-yellow-400">Home </NavLink>
+        <NavLink to="/" className="hover:text-yellow-400">
+          Home{" "}
+        </NavLink>
       </li>
       <li className="hover:text-my_color-400">
-        <NavLink to="/OurMenu" className="hover:text-yellow-400">OurMenu</NavLink>
+        <NavLink to="/OurMenu" className="hover:text-yellow-400">
+          OurMenu
+        </NavLink>
       </li>
       <li className="hover:text-my_color-400">
-        <NavLink to="/OurShop" className="hover:text-yellow-400">OurShop</NavLink>
+        <NavLink to="/OurShop" className="hover:text-yellow-400">
+          OurShop
+        </NavLink>
       </li>
       <li className="hover:text-my_color-400">
-        <NavLink to="/ContactUs" className="hover:text-yellow-400">Contact Us</NavLink>
+        <NavLink to="/ContactUs" className="hover:text-yellow-400">
+          Contact Us
+        </NavLink>
       </li>
       <li className="hover:text-my_color-400">
-        <NavLink to="/DashBoard" className="hover:text-yellow-400">DashBoard</NavLink>
+        <NavLink to="/DashBoard" className="hover:text-yellow-400">
+          DashBoard
+        </NavLink>
       </li>
-     
 
-      {/* <li className="hover:text-my_color-400">
-          <NavLink to="/Login">Login</NavLink>
-        </li> */}
-
-      {/* i dent need it  */}
       {user?.email ? (
-          <>
-            
-            <li className="hover:text-my_color-400">
-              <NavLink to="/Profile">Profile</NavLink>
-            </li>
-          </>
-        ) : (
-          <li className="hover:text-my_color-400">
-            <NavLink to="/Login">Log in</NavLink>
-          </li>
-        )}
+        <>
+          {/* <li className="hover:text-my_color-400">
+            <NavLink to="/Profile">Profile</NavLink>
+          </li> */}
+        </>
+      ) : (
+        <li className="hover:text-my_color-400">
+          <NavLink to="/Login">Log in</NavLink>
+        </li>
+      )}
       {/*  */}
     </>
   );
@@ -81,18 +84,14 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
+
         <img src={navlogo} alt="" />
       </div>
 
-      {/* <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-      </div> */}
-
       <div className="navbar-end">
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-      </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{links}</ul>
+        </div>
         {/*  */}
         <div className="flex gap-5 text-black">
           <div className="dropdown dropdown-end">
@@ -103,7 +102,6 @@ const Navbar = () => {
             >
               <div className="indicator">
                 <svg
-                
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-white"
                   fill="none"
@@ -117,7 +115,9 @@ const Navbar = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item text-yellow-500 ">8</span>
+                <span className="badge badge-sm indicator-item text-yellow-500 ">
+                  8
+                </span>
               </div>
             </div>
             <div
@@ -146,9 +146,10 @@ const Navbar = () => {
                 <img
                   alt="Tailwind CSS Navbar component"
                   title={user?.displayName}
-                  src={user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"}
-
-                  
+                  src={
+                    user?.photoURL ||
+                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  }
                 />
               </div>
             </div>
@@ -156,21 +157,24 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <Link to='/Profile' className="justify-between">
-                  Profile
-                  {/* <span className="badge">New</span> */}
-                </Link>
-              </li>
-             
-              <li>
-                <Link onClick={logout}>Logout</Link>
-              </li>
+              {user?.email ? (
+                <>
+                  <li className="hover:text-my_color-400">
+                    <NavLink to="/Profile">Profile</NavLink>
+                  </li>
+                  <li>
+                    <Link onClick={logout}>Logout</Link>
+                  </li>
+                </>
+              ) : (
+                <li className="hover:text-my_color-400">
+                  <NavLink to="/Login">Log in</NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
