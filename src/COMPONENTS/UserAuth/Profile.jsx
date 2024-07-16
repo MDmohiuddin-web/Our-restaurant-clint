@@ -66,7 +66,7 @@ const Profile = () => {
                   />
                 </div>
 
-                <button className="bg-red-500 text-white  btn border-none  ">
+                <button className="bg-yellow-500 text-white  btn border-none  ">
                   update profile
                 </button>
               </form>

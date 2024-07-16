@@ -10,7 +10,7 @@ const Navbar = () => {
     logOut()
       .then(() => {
         toast.warn("sign out success full");
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => console.error(error));
   };

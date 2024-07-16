@@ -10,10 +10,11 @@ import OurMenu from "./COMPONENTS/Our Menu/OurMenu";
 import OurShop from "./COMPONENTS/Our Shop/OurShop";
 import D_Bord from "./COMPONENTS/DASHBOARD/D_Bord";
 import Root from "./ROOT/Root";
-import Signin from "./COMPONENTS/signinorregister/Signin";
-import Sigup from "./COMPONENTS/signinorregister/Sigup";
+import Signin from "./COMPONENTS/UserAuth/Signin";
+import Sigup from "./COMPONENTS/UserAuth/Sigup";
 import AuthProvider from "./AuthContext/AuthProvider";
-import Profile from "./COMPONENTS/signinorregister/Profile";
+import Profile from "./COMPONENTS/UserAuth/Profile";
+import CONTACTUS from "./COMPONENTS/UserAuth/CONTACTUS";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/ContactUs",
-        element: <ContactUs></ContactUs>,
+        element: <CONTACTUS></CONTACTUS>,
       },
       {
         path: "/OurMenu",

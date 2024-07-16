@@ -35,3 +35,10 @@
 .userauth{
     background-image: url('/src/assets/Resources/others/authentication1.png');
 }
+
+.CONTACTUSIMG{
+    background-image: url('/src/assets/Resources/contact/banner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
