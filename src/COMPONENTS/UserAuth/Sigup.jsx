@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 
 const Sigup = () => {
-  const { createUser, googleSignIn ,updateUserProfile} = useContext(AuthContext);
+  const { createUser, googleSignIn, updateUserProfile } =
+    useContext(AuthContext);
   // const navigate = useNavigate();
   // const location=useLocation();
 
@@ -23,7 +24,8 @@ const Sigup = () => {
         const user = rec.user;
         console.log(user);
         navigate(location?.state || "/");
-        toast.success("signup success full");
+        alert("signup success full");
+
         window.location.reload();
       })
       .then((error) => console.error(error));
@@ -34,6 +36,7 @@ const Sigup = () => {
     googleSignIn()
       .then((res) => {
         console.log(res);
+        alert("User login successfully");
       })
       .then((error) => console.error(error));
   };
@@ -93,13 +96,11 @@ const Sigup = () => {
         {/*  */}
         <form onSubmit={handleSubmit}>
           <div className="mt-4">
-            <label
-              className="block mb-2 text-sm font-medium text-black "
-              
-            >
+            <label className="block mb-2 text-sm font-medium text-black ">
               Name
             </label>
             <input
+              
               required
               name="name"
               placeholder="Name"
@@ -114,6 +115,7 @@ const Sigup = () => {
               Email Address
             </label>
             <input
+              required
               name="email"
               placeholder="Email Address"
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
@@ -126,10 +128,10 @@ const Sigup = () => {
               <label className="block mb-2 text-sm font-medium text-black ">
                 Password
               </label>
-              
             </div>
 
             <input
+              required
               placeholder="password"
               name="password"
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"

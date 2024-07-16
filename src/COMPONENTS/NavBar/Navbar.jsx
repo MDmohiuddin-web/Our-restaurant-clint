@@ -3,16 +3,23 @@ import { Link, NavLink } from "react-router-dom";
 import navlogo from "../../assets/Resources/nav-logo.svg";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useContext } from "react";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
+ 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  
   const logout = () => {
     logOut()
       .then(() => {
-        toast.warn("sign out success full");
+        toast.success("sign out success full");
         // window.location.reload();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        toast.error("User logOut Unsuccessfully")
+        // alert("User logOut successfully");
+      });
   };
 
   const links = (

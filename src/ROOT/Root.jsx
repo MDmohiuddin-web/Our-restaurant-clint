@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../COMPONENTS/NavBar/Navbar";
 import Footer from "../COMPONENTS/Footer/Footer";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 const Root = () => {
   return (
@@ -9,18 +9,7 @@ const Root = () => {
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

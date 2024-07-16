@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
+ 
 
 const Profile = () => {
   const { updateUserProfile, user } = useContext(AuthContext);
@@ -14,10 +15,15 @@ const Profile = () => {
     console.log(Updatename, UpdatephotoURL);
     updateUserProfile(Updatename, UpdatephotoURL)
     .then(() => {
-        toast.success("updateUserProfile success full");
-        window.location.reload();
+      toast.success("updateUserProfile success full");
+        // alert("updateUserProfile success full");
+
+        // window.location.reload();
     })
-    .catch((error) => console.error(error)) 
+    .catch((error) => {console.error(error)
+      toast.error("updateUserProfile Unsuccess full");
+    }) 
+
   };
   return (
     <div className="  py-32  "> 
@@ -46,6 +52,7 @@ const Profile = () => {
                     update Username
                   </label>
                   <input
+                  required
                     type="text"
                     name="Updatename"
                     placeholder="Enter Name"
@@ -58,6 +65,7 @@ const Profile = () => {
                     update Image Url
                   </label>
                   <input
+                  required
                     type="text"
                     name="UpdatephotoURL"
                     placeholder="Image Url"

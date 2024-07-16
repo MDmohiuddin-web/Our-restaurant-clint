@@ -6,6 +6,7 @@ import {
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
+import toast from "react-hot-toast";
 
 const Signin = () => {
   const { signin, googleSignIn } = useContext(AuthContext);
@@ -25,17 +26,26 @@ const Signin = () => {
     signin(email, password)
       .then((res) => {
         console.log(res);
-        alert("User login successfully");
+        // alert("User login successfully");
+        toast.success("User login successfully");
       })
-      .then((error) => console.error(error));
+      .then((error) => {
+        console.error(error);
+        toast.error("User login Unsuccessfully");
+      });
     si;
   };
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((res) => {
         console.log(res);
+        // alert("User login successfully");
+        toast.success("User login successfully");
       })
-      .then((error) => console.error(error));
+      .then((error) => {
+        console.error(error);
+        toast.error("User login Unsuccessfully");
+      });
   };
 
   const handleValidateCaptcha = (e) => {
@@ -108,6 +118,7 @@ const Signin = () => {
               Email Address
             </label>
             <input
+              required
               name="email"
               placeholder="Email Address"
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
@@ -120,10 +131,10 @@ const Signin = () => {
               <label className="block mb-2 text-sm font-medium text-black ">
                 Password
               </label>
-              
             </div>
 
             <input
+              required
               placeholder="password"
               name="password"
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
@@ -138,6 +149,7 @@ const Signin = () => {
               <LoadCanvasTemplate />
             </label>
             <input
+              required
               onBlur={handleValidateCaptcha}
               placeholder="type the texts in the box"
               id="chapter"
