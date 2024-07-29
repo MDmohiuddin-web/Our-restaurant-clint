@@ -15,6 +15,7 @@ import Sigup from "./COMPONENTS/UserAuth/Sigup";
 import AuthProvider from "./AuthContext/AuthProvider";
 import Profile from "./COMPONENTS/UserAuth/Profile";
 import CONTACTUS from "./COMPONENTS/UserAuth/CONTACTUS";
+import PrivateRouts from "./PRIVATE ROUTS/PrivateRouts";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Profile",
-        element: <Profile></Profile>,
+        element:<PrivateRouts> <Profile></Profile></PrivateRouts>,
       },
     ],
   },

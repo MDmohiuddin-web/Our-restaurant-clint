@@ -1,9 +1,9 @@
 import Populermenu from "../Home/Populermenu";
 // import UseMenu from "../Hooks/UseMenu";
 import DESSERTS from "./DESSERTS/DESSERTS";
-import Pizza from "./Pizza";
+import Pizza from "./Pizza/Pizza";
 import Soup from "./Soup/Soup";
-import TodaysOffers from "./TodaysOffers";
+import TodaysOffers from "./TodaysOffers/TodaysOffers";
 import Saled from "./saled/Saled";
 
 

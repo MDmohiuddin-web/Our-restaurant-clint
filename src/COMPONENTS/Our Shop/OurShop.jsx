@@ -24,14 +24,13 @@ const checkArray = (array, checkSize) => {
 const OurShop = () => {
   const [menu] = UseMenu();
 
-  const drinks = menu.filter((item) => item.category === "drinks");
-  const soup = menu.filter((item) => item.category === "soup");
-  const salad = menu.filter((item) => item.category === "salad");
-  const dessert = menu.filter((item) => item.category === "dessert");
-  const pizza = menu.filter((item) => item.category === "pizza");
+  const drinks   = menu.filter((item) => item.category === "drinks");
+  const soup     = menu.filter((item) => item.category === "soup");
+  const salad    = menu.filter((item) => item.category === "salad");
+  const dessert  = menu.filter((item) => item.category === "dessert");
+  const pizza    = menu.filter((item) => item.category === "pizza");
 
   const pagination = {
-    
     clickable: true,
     renderBullet: function (index, className) {
       return '<span className="' + className + '">' + (index + 1) + "</span>";
@@ -39,11 +38,11 @@ const OurShop = () => {
   };
 
   // Check the items into arrays of 6 items each
-  const SaladItems = checkArray(salad, 6);
-  const pizzaItems = checkArray(pizza, 6);
-  const drinksItems = checkArray(drinks, 6);
+  const SaladItems   = checkArray(salad, 6);
+  const pizzaItems   = checkArray(pizza, 6);
+  const drinksItems  = checkArray(drinks, 6);
   const dessertItems = checkArray(dessert, 6);
-  const soupItems = checkArray(soup, 6);
+  const soupItems    = checkArray(soup, 6);
 
   return (
     <div>
@@ -70,10 +69,10 @@ const OurShop = () => {
           <Swiper
             pagination={pagination}
             modules={[Pagination]}
-            className="mySwiper "
+            className="mySwiper py-5"
           >
             {SaladItems.map((chunk, index) => (
-              <SwiperSlide key={index} >
+              <SwiperSlide key={index}>
                 <div className="gap-5 flex flex-wrap justify-center items-center my-10">
                   {chunk.map((item) => (
                     <FoodCard item={item} key={item._id}></FoodCard>
@@ -84,13 +83,13 @@ const OurShop = () => {
           </Swiper>
         </TabPanel>
         <TabPanel>
-        <Swiper
+          <Swiper
             pagination={pagination}
             modules={[Pagination]}
             className="mySwiper"
           >
             {pizzaItems.map((chunk, index) => (
-              <SwiperSlide key={index} >
+              <SwiperSlide key={index}>
                 <div className="gap-5 flex flex-wrap justify-center items-center my-10">
                   {chunk.map((item) => (
                     <FoodCard item={item} key={item._id}></FoodCard>
@@ -99,16 +98,15 @@ const OurShop = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          
         </TabPanel>
         <TabPanel>
-        <Swiper
+          <Swiper
             pagination={pagination}
             modules={[Pagination]}
             className="mySwiper"
           >
             {soupItems.map((chunk, index) => (
-              <SwiperSlide key={index} >
+              <SwiperSlide key={index}>
                 <div className="gap-5 flex flex-wrap justify-center items-center my-10">
                   {chunk.map((item) => (
                     <FoodCard item={item} key={item._id}></FoodCard>
@@ -119,13 +117,13 @@ const OurShop = () => {
           </Swiper>
         </TabPanel>
         <TabPanel>
-        <Swiper
+          <Swiper
             pagination={pagination}
             modules={[Pagination]}
             className="mySwiper"
           >
             {dessertItems.map((chunk, index) => (
-              <SwiperSlide key={index} >
+              <SwiperSlide key={index}>
                 <div className="gap-5 flex flex-wrap justify-center items-center my-10">
                   {chunk.map((item) => (
                     <FoodCard item={item} key={item._id}></FoodCard>
@@ -136,14 +134,14 @@ const OurShop = () => {
           </Swiper>
         </TabPanel>
         <TabPanel>
-        <Swiper
+          <Swiper
             pagination={pagination}
             modules={[Pagination]}
             className="mySwiper"
           >
             {drinksItems.map((chunk, index) => (
-              <SwiperSlide key={index} >
-                <div className="gap-5 flex flex-wrap justify-center items-center my-10">
+              <SwiperSlide key={index}>
+                <div className="gap-5 flex flex-wrap justify-center items-center my-10 ">
                   {chunk.map((item) => (
                     <FoodCard item={item} key={item._id}></FoodCard>
                   ))}

@@ -3,13 +3,16 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import toast from "react-hot-toast";
 
 const Signin = () => {
   const { signin, googleSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.pathname || "/";
 
   const [disabled, setDisable] = useState(true);
 
@@ -25,26 +28,27 @@ const Signin = () => {
     console.log(email, password);
     signin(email, password)
       .then((res) => {
-        console.log(res);
-        // alert("User login successfully");
         toast.success("User login successfully");
+        const user = res.user;
+        console.log(user);
+        navigate(from);
       })
-      .then((error) => {
+      .catch((error) => {
         console.error(error);
         toast.error("User login Unsuccessfully");
       });
-    si;
   };
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((res) => {
+        navigate(from);
         console.log(res);
         // alert("User login successfully");
-        toast.success("User login successfully");
+        toast.success("google SignIn successfully successfully");
       })
-      .then((error) => {
+      .catch((error) => {
         console.error(error);
-        toast.error("User login Unsuccessfully");
+        toast.error("google SignIn successfully Unsuccessfully");
       });
   };
 
@@ -56,7 +60,7 @@ const Signin = () => {
       // alert("Captcha matched");
     } else {
       setDisable(true);
-      alert("Captcha did not match");
+      toast.error("Captcha did not match");
     }
   };
 

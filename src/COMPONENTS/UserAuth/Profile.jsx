@@ -32,7 +32,7 @@ const Profile = () => {
           className="rounded-lg"
           defaultValue={user?.photoURL}
           src={
-            user?.photoURL || "https://source.unsplash.com/150x150/?portrait?3"
+            user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
           }
         />
         <div className="space-y-4 text-center divide-y divide-gray-700 dark:divide-gray-300">

@@ -1,24 +1,25 @@
 import React from 'react';
+import UseMenu from '../../../Hooks/UseMenu';
 import { Link } from 'react-router-dom';
-import UseMenu from '../../Hooks/UseMenu';
-import ToDaysOffersCards from './ToDaysOffersCards';
+import PizzaCards from './PizzaCards';
 
-const TodaysOffers = () => {
+const Pizza = () => {
     const [menu] = UseMenu();
-    const offered = menu.filter((item) => item.category === "offered");
-
+    const pizza = menu.filter((item) => item.category === "pizza");
     return (
-     <div className="my-10 w-full p-5 text-center ">
+    <div className="my-10 w-full p-5 text-center ">
+
       <div className="md:w-[80%] m-auto flex flex-wrap gap-5 ">
         
-        {offered.map((item) => (
-          <ToDaysOffersCards key={item._id} item={item}></ToDaysOffersCards>
+        {pizza.map((item) => (
+          <PizzaCards key={item._id} item={item}></PizzaCards>
         ))}
 
-        
+       
       </div>
       <Link
-            to="/OurShop"
+      to="/OurShop"
+            
           className="bg-white mx-auto rounded-md relative hover:shadow-md border-b-2 border-b-black z-30 inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-black transition-all duration-500  cursor-pointer group ease bg-gradient-to-b from-white to-gray-50 hover:from-gray-50 hover:to-white active:to-white"
         >
           <span className="w-full h-0.5 absolute bottom-0 group-active:bg-transparent left-0 bg-white"></span>
@@ -29,4 +30,4 @@ const TodaysOffers = () => {
     );
 };
 
-export default TodaysOffers;
+export default Pizza;
