@@ -1,15 +1,43 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../../Hooks/UseAuth";
 import toast from "react-hot-toast";
+import { axiosSecure } from "../../../Hooks/UseAxiosSecure";
 
 const FoodCard = ({ item }) => {
-  const { name, image, recipe, price } = item;
+  const { name, image, recipe, price,_id } = item;
   const navigate=useNavigate()
+  // const location=useLocation()
+  // console.log(location)
+  
+
   const { user } = UseAuth();
   const addToCart = (food) => {
     if (user && user.email) {
       // TODO: Send cart item to the database
-      toast.success("Added to cart");
+      // toast.success("Added to cart");
+      const CartItem = () => {
+        return {
+          menuId: _id,
+          email: user.email,
+          name: name,
+          image: image,
+          recipe: recipe,
+          price: price,
+        };
+      }
+      axiosSecure.post('http://localhost:4050/cards', CartItem)
+      .then((res) => {
+          console.log(res.data)
+          if(res.data.insertedId){
+            toast.success(`"${name}" added to cart successfully`);
+          }else{
+            toast.error(`"${name}" added to cart Unsuccessfully`);
+          }
+        })
+       .catch((err) => {
+          console.log(err);
+        });
+      
     } else {
       toast.error("Please login to add to cart");
       navigate("/Login");

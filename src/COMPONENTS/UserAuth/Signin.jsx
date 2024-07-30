@@ -12,7 +12,7 @@ const Signin = () => {
   const { signin, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  let from = location.state?.pathname || "/"; 
+  let from = location.state?.pathname || "/";
 
   const [disabled, setDisable] = useState(true);
 

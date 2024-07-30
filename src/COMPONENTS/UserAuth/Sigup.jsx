@@ -8,7 +8,8 @@ const Sigup = () => {
     useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.pathname || "/"; 
+  console.log(location);
+  let from = location?.pathname || "/"; 
 
   const handleSubmit = (e) => {
     e.preventDefault();
