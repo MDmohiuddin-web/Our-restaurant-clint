@@ -8,7 +8,7 @@ const Sigup = () => {
     useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.pathname || "/";
+  let from = location.state?.pathname || "/"; 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,8 +21,10 @@ const Sigup = () => {
     console.log(name, email, password);
     createUser(email, password)
       .then((res) => {
+        toast.success("signup success full");
         // navigate("/");
         updateUserProfile(name, Photo);
+        // setUser({...user,photoURL:Photo,displayName:name})
 
         // Signed in
         const user = res.user;
@@ -30,7 +32,7 @@ const Sigup = () => {
         // navigate(from, { replace: true });
         navigate(from);
 
-        toast.success("signup success full");
+        
 
         // window.location.reload();
       })
