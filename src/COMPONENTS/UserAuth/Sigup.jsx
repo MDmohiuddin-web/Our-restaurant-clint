@@ -2,44 +2,82 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const Sigup = () => {
-  const { createUser, googleSignIn, updateUserProfile } =
-    useContext(AuthContext);
+  const { createUser, googleSignIn, updateUserProfile ,setUser} =useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
-  let from = location?.pathname || "/"; 
+  const from = location.state?.from?.pathname || "/";
+    console.log('state in the location login page', location.state)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    const form = e.target;
-    const name = form.name.value;
-    const Photo = form.Photo.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(name, email, password);
-    createUser(email, password)
-      .then((res) => {
-        toast.success("signup success full");
-        // navigate("/");
-        updateUserProfile(name, Photo);
-        // setUser({...user,photoURL:Photo,displayName:name})
+  //   const form = e.target;
+  //   const name = form.name.value;
+  //   const Photo = form.Photo.value;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
+  //   console.log(name, email, password);
+  //   createUser(email, password)
+  //     .then((res) => {
+  //       toast.success("signup success full");
+  //       // navigate("/");
+  //       updateUserProfile(name, Photo);
+  //       // setUser({...user,photoURL:Photo,displayName:name})
 
-        // Signed in
-        const user = res.user;
-        console.log(user);
-        // navigate(from, { replace: true });
-        navigate(from);
+  //       // Signed in
+  //       const user = res.user;
+  //       console.log(user);
+  //       // navigate(from, { replace: true });
+  //       navigate(from);
 
+  //       // window.location.reload();
+  //     })
+  //     .catch((error) => {
+  //       toast.error("signup Unsuccess full");
+  //       console.error(error);
+  //     });
+  // };
+
+  // react form using method
+
+  const onSubmit = (data) => {
+    console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast.success("signup success full")
+        navigate(from, { replace: true });
+        updateUserProfile(data.name, data.photoURL)
+        setUser({...user,photoURL:data.photoURL,displayName:data.name})
         
-
-        // window.location.reload();
+          .then(() => {
+            //create user entry in db
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+            };
+            console.log(userInfo);
+          })
+          .catch((error) => {
+            console.error(error);
+            toast.error("Update profile Unsuccess full");
+          });
       })
       .catch((error) => {
-        toast.error("signup Unsuccess full");
         console.error(error);
+        toast.error("signup Unsuccess full");
       });
   };
 
@@ -48,7 +86,7 @@ const Sigup = () => {
     googleSignIn()
       .then((res) => {
         navigate(from);
-        console.log(res);
+        console.log(res.user);
         toast.success("google SignIn successfully");
       })
       .catch((error) => {
@@ -110,32 +148,39 @@ const Sigup = () => {
         {/*  */}
 
         {/*  */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mt-4">
             <label className="block mb-2 text-sm font-medium text-black ">
               Name
             </label>
             <input
-              required
+              {...register("name", { required: true })}
               name="name"
-              placeholder="Name"
-              id="Name"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
               type="text"
+              placeholder="Name"
+              className="input input-bordered w-full "
             />
+            {errors.name && (
+              <span className="text-red-600 font-semibold">
+                Name is required
+              </span>
+            )}
           </div>
           <div className="mt-4">
             <label className="block mb-2 text-sm font-medium text-black ">
               Photo url
             </label>
             <input
-              required
-              name="Photo"
-              placeholder="Name"
-              id="Name"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-              type="url"
+              {...register("photoURL", { required: true })}
+              type="text"
+              placeholder="Photo URL"
+              className="input input-bordered w-full"
             />
+            {errors.photoURL && (
+              <span className="text-red-600 font-semibold">
+                Photo URL is required is required
+              </span>
+            )}
           </div>
 
           <div className="mt-4">
@@ -143,11 +188,12 @@ const Sigup = () => {
               Email Address
             </label>
             <input
-              required
+              {...register("email")}
               name="email"
-              placeholder="Email Address"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
               type="email"
+              placeholder="Email"
+              className="input input-bordered w-full"
+              required
             />
           </div>
 
@@ -159,12 +205,31 @@ const Sigup = () => {
             </div>
 
             <input
-              required
-              placeholder="password"
+              {...register("password", {
+                required: true,
+                minLength: 6,
+                maxLength: 20,
+                pattern:
+                  /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z])/,
+              })}
               name="password"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
               type="password"
+              placeholder="Password"
+              className="input input-bordered w-full"
             />
+
+            {errors.password?.type === "required" && (
+              <p className="text-red-600">Password required</p>
+            )}
+            {errors.password?.type === "minLength" && (
+              <p className="text-red-600">Password must be 6 </p>
+            )}
+            {errors.password?.type === "pattern" && (
+              <p className="text-red-600">
+                Password must be One uppercase, one lower case,one number and
+                one special chars
+              </p>
+            )}
           </div>
 
           <div className="mt-6">

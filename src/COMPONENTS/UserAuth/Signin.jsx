@@ -12,7 +12,8 @@ const Signin = () => {
   const { signin, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  let from = location.state?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
+  console.log('state in the location login page', location.state)
 
   const [disabled, setDisable] = useState(true);
 

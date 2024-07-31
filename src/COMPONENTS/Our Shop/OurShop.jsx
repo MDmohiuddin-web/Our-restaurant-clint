@@ -23,7 +23,7 @@ const checkArray = (array, checkSize) => {
 
 const OurShop = () => {
   const [menu] = UseMenu();
-
+// filter items from menu /data base
   const drinks   = menu.filter((item) => item.category === "drinks");
   const soup     = menu.filter((item) => item.category === "soup");
   const salad    = menu.filter((item) => item.category === "salad");

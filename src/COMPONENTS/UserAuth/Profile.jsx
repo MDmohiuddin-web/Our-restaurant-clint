@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
  
 
 const Profile = () => {
-  const { updateUserProfile, user } = useContext(AuthContext);
+  const { updateUserProfile, user,setUser } = useContext(AuthContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +14,7 @@ const Profile = () => {
     const Updatename = form.Updatename.value;
     console.log(Updatename, UpdatephotoURL);
     updateUserProfile(Updatename, UpdatephotoURL)
+    setUser({...user,photoURL:data.photoURL,displayName:data.name})
     .then(() => {
       toast.success("updateUserProfile success full");
         // alert("updateUserProfile success full");

@@ -10,7 +10,7 @@ console.log(location)
     return children;
   }
 
-  return <Navigate to="/Login" state={location.state?.pathname} replace></Navigate> ;
+  return <Navigate to="/Login" state={{from: location}} replace></Navigate> ;
 };
 
 export default PrivateRouts;
