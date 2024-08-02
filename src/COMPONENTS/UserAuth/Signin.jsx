@@ -10,10 +10,10 @@ import toast from "react-hot-toast";
 
 const Signin = () => {
   const { signin, googleSignIn } = useContext(AuthContext);
-  const location = useLocation();
   const navigate = useNavigate();
+    const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log('state in the location login page', location.state)
+  console.log("state in the location login page", location.state);
 
   const [disabled, setDisable] = useState(true);
 
@@ -32,7 +32,7 @@ const Signin = () => {
         toast.success("User login successfully");
         const user = res.user;
         console.log(user);
-        navigate(from);
+        navigate(from, { replace: true })
       })
       .catch((error) => {
         console.error(error);

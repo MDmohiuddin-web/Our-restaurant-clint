@@ -1,50 +1,52 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../../Hooks/UseAuth";
 import toast from "react-hot-toast";
-import { axiosSecure } from "../../../Hooks/UseAxiosSecure";
+import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 
 const FoodCard = ({ item }) => {
-  const { name, image, recipe, price,_id } = item;
-  const navigate=useNavigate()
-  // const location=useLocation()
+  const { name, image, recipe, price, _id } = item;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const axiosSecure = UseAxiosSecure()
   // console.log(location)
-  
 
   const { user } = UseAuth();
+
   const addToCart = (food) => {
     if (user && user.email) {
-      // TODO: Send cart item to the database
-      // toast.success("Added to cart");
-      const CartItem = () => {
-        return {
-          menuId: _id,
-          email: user.email,
-          name: name,
-          image: image,
-          recipe: recipe,
-          price: price,
-        };
-      }
-      axiosSecure.post('http://localhost:4050/cards', CartItem)
-      .then((res) => {
-          console.log(res.data)
-          if(res.data.insertedId){
+      console.log(user.email, food);
+      //send cart item to the database
+      const cartItem = {
+        menuId: _id,
+        email: user.email,
+        name,
+        image,
+        price,
+      };
+      // console.log(cartItem);
+      // axiosSecure using hook
+      axiosSecure
+        .post("/cards", cartItem)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.insertedId) {
             toast.success(`"${name}" added to cart successfully`);
-          }else{
+            // refetch cart to update the cart items count
+            refetch();
+          } else {
             toast.error(`"${name}" added to cart Unsuccessfully`);
           }
         })
-       .catch((err) => {
+        .catch((err) => {
           console.log(err);
         });
-      
     } else {
       toast.error("Please login to add to cart");
-      navigate("/Login");
+      navigate("/Login", { state: { from: location } });
     }
     console.log(food);
   };
-  
+
   //
   return (
     <div className="card max-w-[300px]  bg-base-100 shadow-xl">

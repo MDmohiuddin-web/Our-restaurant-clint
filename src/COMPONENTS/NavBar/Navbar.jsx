@@ -4,9 +4,11 @@ import navlogo from "../../assets/Resources/nav-logo.svg";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useContext } from "react";
 import toast from "react-hot-toast";
+import UseCart from "../../Hooks/UseCart";
  
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart]=UseCart()
 
   
   const logout = () => {
@@ -125,7 +127,7 @@ const Navbar = () => {
                   />
                 </svg>
                 <span className="badge badge-sm indicator-item text-white bg-transparent border-none">
-                  {`+99`}
+                  {`+${cart?.length || 0}`}
                 </span>
               </div>
             </Link>

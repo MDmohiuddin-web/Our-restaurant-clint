@@ -7,7 +7,7 @@ const UseMenu = () => {
 
   useEffect(() => {
     // fetch("menu.json")
-    fetch("http://localhost:4050/menu")
+    fetch("http://localhost:9585/menu")
       .then((res) => res.json())
       .then((data) =>
        {

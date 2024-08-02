@@ -18,7 +18,7 @@ const Reviewcard = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     // fetch("review.json")
-    fetch("http://localhost:4050/reviews")
+    fetch("http://localhost:9585/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

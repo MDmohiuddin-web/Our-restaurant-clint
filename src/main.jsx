@@ -3,6 +3,11 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  QueryClient,
+  QueryClientProvider,
+  
+} from "@tanstack/react-query";
 
 import Root from "./ROOT/Root";
 import Home from "./COMPONENTS/Home/Home";
@@ -15,6 +20,8 @@ import OurShop from "./COMPONENTS/Our Shop/OurShop";
 import AuthProvider from "./AuthContext/AuthProvider";
 import CONTACTUS from "./COMPONENTS/UserAuth/CONTACTUS";
 import PrivateRouts from "./PRIVATE ROUTS/PrivateRouts";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -47,12 +54,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/DashBoard",
-        element:<PrivateRouts><D_Bord></D_Bord></PrivateRouts>,
+        element: (
+          <PrivateRouts>
+            <D_Bord></D_Bord>
+          </PrivateRouts>
+        ),
       },
-      
+
       {
         path: "/Profile",
-        element:<PrivateRouts> <Profile></Profile></PrivateRouts>,
+        element: (
+          <PrivateRouts>
+            <Profile></Profile>
+          </PrivateRouts>
+        ),
       },
     ],
   },
@@ -61,7 +76,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>
 );
