@@ -77,7 +77,8 @@ const Profile = () => {
                   <label className="block text-gray-400 dark:text-gray-600">
                     update Username
                   </label>
-                  <input
+                  <input 
+                  
                     type="text"
                     name="name"
                     defaultValue={user?.displayName}
@@ -93,7 +94,8 @@ const Profile = () => {
                   <label className="block text-gray-400 dark:text-gray-600">
                     update Image Url
                   </label>
-                  <input
+                  <input 
+                  
                     type="text"
                     name="photoURL"
                     placeholder="Image Url"
