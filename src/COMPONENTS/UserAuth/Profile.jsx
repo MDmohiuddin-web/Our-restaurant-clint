@@ -1,30 +1,55 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
  
 
 const Profile = () => {
   const { updateUserProfile, user,setUser } = useContext(AuthContext);
+  const navigate=useNavigate()
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
 
-    const UpdatephotoURL = form.UpdatephotoURL.value;
-    const Updatename = form.Updatename.value;
-    console.log(Updatename, UpdatephotoURL);
-    updateUserProfile(Updatename, UpdatephotoURL)
-    setUser({...user,photoURL:data.photoURL,displayName:data.name})
-    .then(() => {
-      toast.success("updateUserProfile success full");
-        // alert("updateUserProfile success full");
+  //   const UpdatephotoURL = form.UpdatephotoURL.value;
+  //   const Updatename = form.Updatename.value;
+  //   console.log(Updatename, UpdatephotoURL);
+  //   updateUserProfile(Updatename, UpdatephotoURL)
+  //   setUser({...user,photoURL:data.photoURL,displayName:data.name})
+  //   .then(() => {
+  //     toast.success("updateUserProfile success full");
+      
+  //       // alert("updateUserProfile success full");
 
-        // window.location.reload();
-    })
-    .catch((error) => {console.error(error)
-      toast.error("updateUserProfile Unsuccess full");
-    }) 
+  //      navigate("/")
+  //   })
+  //   .catch((error) => {console.error(error)
+  //     toast.error("updateUserProfile Unsuccess full");
+  //   }) 
 
+  // };
+
+  const {
+    register,
+    handleSubmit,
+
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    const { photoURL, name } = data;
+    
+    updateUserProfile(name, photoURL)
+      .then(() => {
+        // console.log(result)
+        toast.success("profile updated")
+        navigate("/")
+      })
+      .catch((error) => {
+        console.log(error)
+        toast.warning("profile update failed");
+      });
   };
   return (
     <div className="  py-32  "> 
@@ -47,32 +72,38 @@ const Profile = () => {
           </div>
           <div className="flex justify-center pt-2 space-x-4 align-center">
             <div className="w-full  m-auto  p-8 space-y-3 rounded-xl bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
-              <form onSubmit={onSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)}  className="space-y-6">
                 <div className="space-y-1 text-sm">
                   <label className="block text-gray-400 dark:text-gray-600">
                     update Username
                   </label>
                   <input
-                  required
                     type="text"
-                    name="Updatename"
-                    placeholder="Enter Name"
+                    name="name"
                     defaultValue={user?.displayName}
+                    placeholder="Enter Name"
+                    {...register("name", { required: true })}
                     className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-my_color-400 focus:dark:border-my_color-600"
                   />
+                  <small className="text-danger text-red-500 ">
+                    {errors.name && "This field is required"}
+                  </small>
                 </div>
                 <div className="space-y-1 text-sm">
                   <label className="block text-gray-400 dark:text-gray-600">
                     update Image Url
                   </label>
                   <input
-                  required
                     type="text"
-                    name="UpdatephotoURL"
+                    name="photoURL"
                     placeholder="Image Url"
                     defaultValue={user?.photoURL}
+                    {...register("photoURL", { required: true })}
                     className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-my_color-400 focus:dark:border-my_color-600"
                   />
+                  <small className="text-red-500 text-danger">
+                    {errors.photoURL && "This field is required"}
+                  </small>
                 </div>
 
                 <button className="bg-yellow-500 text-white  btn border-none  ">

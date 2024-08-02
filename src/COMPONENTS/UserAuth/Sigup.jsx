@@ -63,6 +63,7 @@ const Sigup = () => {
         setUser({...user,photoURL:data.photoURL,displayName:data.name})
         
           .then(() => {
+            reset();
             //create user entry in db
             const userInfo = {
               name: data.name,
