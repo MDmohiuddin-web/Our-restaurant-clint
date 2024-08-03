@@ -38,18 +38,25 @@ const Profile = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    const { photoURL, name } = data;
+    const {  name, photoURL} = data;
     
     updateUserProfile(name, photoURL)
-      .then(() => {
-        // console.log(result)
-        toast.success("profile updated")
-        navigate("/")
-      })
-      .catch((error) => {
-        console.log(error)
-        toast.warning("profile update failed");
-      });
+    .then(() => {
+      // Update local user state
+      setUser((prevUser) => ({
+        ...prevUser,
+        displayName: name,
+        photoURL: photoURL,
+      }))
+  
+      toast.success("Profile updated");
+      // navigate("/");
+    })
+    .catch((error) => {
+      console.error("Error updating profile:", error);
+      toast.error("Profile update failed");
+    });
+  
   };
   return (
     <div className="  py-32  "> 
@@ -58,7 +65,7 @@ const Profile = () => {
           className="rounded-lg"
           defaultValue={user?.photoURL}
           src={
-            user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            user?.photoURL || "https://images.pexels.com/photos/2607602/pexels-photo-2607602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           }
         />
         <div className="space-y-4 text-center divide-y divide-gray-700 dark:divide-gray-300">
@@ -96,7 +103,7 @@ const Profile = () => {
                   </label>
                   <input 
                   
-                    type="text"
+                    type="url"
                     name="photoURL"
                     placeholder="Image Url"
                     defaultValue={user?.photoURL}

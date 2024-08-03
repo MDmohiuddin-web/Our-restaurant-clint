@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { FaEye } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Sigup = () => {
-  const { createUser, googleSignIn, updateUserProfile ,setUser} =useContext(AuthContext);
+  const { createUser, googleSignIn, updateUserProfile, setUser,user } =
+    useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -17,7 +20,12 @@ const Sigup = () => {
   const location = useLocation();
   console.log(location);
   const from = location.state?.from?.pathname || "/";
-    console.log('state in the location login page', location.state)
+  console.log("state in the location login page", location.state);
+  const [password, setPassword] = useState('');
+  
+  const showPassword = () => {
+    setPassword(!password);
+  };
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -57,11 +65,10 @@ const Sigup = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        toast.success("signup success full")
+        toast.success("signup success full");
         navigate(from, { replace: true });
         updateUserProfile(data.name, data.photoURL)
-        setUser({...user,photoURL:data.photoURL,displayName:data.name})
-        
+        // setUser({ ...user, photoURL: data.photoURL, displayName: data.name })
           .then(() => {
             reset();
             //create user entry in db
@@ -173,7 +180,7 @@ const Sigup = () => {
             </label>
             <input
               {...register("photoURL", { required: true })}
-              type="text"
+              type="url"
               placeholder="Photo URL"
               className="input input-bordered w-full"
             />
@@ -198,7 +205,7 @@ const Sigup = () => {
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 relative">
             <div className="flex justify-between">
               <label className="block mb-2 text-sm font-medium text-black ">
                 Password
@@ -214,10 +221,17 @@ const Sigup = () => {
                   /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z])/,
               })}
               name="password"
-              type="password"
               placeholder="Password"
               className="input input-bordered w-full"
+              type={password ?  "text":"password" }
             />
+            {/* password icon form react icon */}
+            <div
+              className="flex justify-end p-1 absolute top-10 right-5"
+              onClick={showPassword}
+            >
+              {password ?  <FaEye />:  <FaEyeSlash />}
+            </div>
 
             {errors.password?.type === "required" && (
               <p className="text-red-600">Password required</p>

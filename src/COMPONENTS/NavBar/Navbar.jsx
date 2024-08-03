@@ -147,7 +147,7 @@ const Navbar = () => {
                   title={user?.displayName}
                   src={
                     user?.photoURL ||
-                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    "https://images.pexels.com/photos/2607602/pexels-photo-2607602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                   }
                 />
               </div>

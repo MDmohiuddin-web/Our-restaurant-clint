@@ -7,19 +7,26 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import toast from "react-hot-toast";
+import { FaEye } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Signin = () => {
   const { signin, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
-    const location = useLocation();
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   console.log("state in the location login page", location.state);
 
   const [disabled, setDisable] = useState(true);
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+
+  const showPassword = () => {
+    setPassword(!password);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +39,7 @@ const Signin = () => {
         toast.success("User login successfully");
         const user = res.user;
         console.log(user);
-        navigate(from, { replace: true })
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -131,7 +138,7 @@ const Signin = () => {
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 relative">
             <div className="flex justify-between">
               <label className="block mb-2 text-sm font-medium text-black ">
                 Password
@@ -143,8 +150,16 @@ const Signin = () => {
               placeholder="password"
               name="password"
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-              type="password"
+              type={password ?  "text":"password" }
             />
+            {/* password icon form react icon */}
+            <div
+              className="flex justify-end p-1 absolute top-10 right-5"
+              onClick={showPassword}
+            >
+              {password ?  <FaEye />:  <FaEyeSlash />}
+            </div>
+
           </div>
 
           <div className="mt-4">
