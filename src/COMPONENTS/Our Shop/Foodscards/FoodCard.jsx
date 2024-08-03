@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../../Hooks/UseAuth";
 import toast from "react-hot-toast";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import UseCart from "../../../Hooks/UseCart";
 
 const FoodCard = ({ item }) => {
   const { name, image, recipe, price, _id } = item;
@@ -11,6 +12,7 @@ const FoodCard = ({ item }) => {
   // console.log(location)
 
   const { user } = UseAuth();
+  const [,refetch]=UseCart()
 
   const addToCart = (food) => {
     if (user && user.email) {
