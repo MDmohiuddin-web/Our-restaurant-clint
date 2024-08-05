@@ -65,7 +65,7 @@ const Profile = () => {
           className="rounded-lg"
           defaultValue={user?.photoURL}
           src={
-            user?.photoURL || "https://images.pexels.com/photos/2607602/pexels-photo-2607602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            user?.photoURL || "https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
           }
         />
         <div className="space-y-4 text-center divide-y divide-gray-700 dark:divide-gray-300">

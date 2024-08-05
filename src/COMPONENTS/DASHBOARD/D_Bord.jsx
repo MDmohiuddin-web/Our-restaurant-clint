@@ -5,6 +5,14 @@ import { FaHome, FaShoppingCart, FaUsers } from "react-icons/fa";
 import { MdBookmarkAdd, MdEmail } from "react-icons/md";
 import { TiThMenu } from "react-icons/ti";
 import { BsMenuButtonWideFill } from "react-icons/bs";
+import {
+  FaBookBookmark,
+  FaCalendar,
+  FaList,
+  FaMessage,
+  FaStreetView,
+  FaWallet,
+} from "react-icons/fa6";
 
 const D_Bord = () => {
   return (
@@ -13,36 +21,37 @@ const D_Bord = () => {
       <div className="m-auto w-[20%] h-svh bg-[#D1A054] p-5">
         <img src={logo} alt="" loading="lazy" className="my-5" />
 
-        <ul className="space-y-2">
-          
-
+        <ul className="space-y-2 uppercase">
           <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
             <FaHome></FaHome>
 
-            <NavLink to="/DashBoard/Cart">Admin Home</NavLink>
+            <NavLink to="/DashBoard/Cart">User Home</NavLink>
+          </li>
+          <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
+            <FaCalendar></FaCalendar>
+            <NavLink to="/DashBoard/Cart">Reservation</NavLink>
           </li>
 
           <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
-            <FaShoppingCart></FaShoppingCart>
-
-            <NavLink to="/DashBoard/Cart">add items</NavLink>
-          </li>
-
-          <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
-            <BsMenuButtonWideFill />
-            <NavLink to="/DashBoard/Cart">manage items</NavLink>
+            <FaWallet></FaWallet>
+            <NavLink to="/DashBoard/Cart">Payment History</NavLink>
           </li>
 
           <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
             <MdBookmarkAdd />
 
-            <NavLink to="/DashBoard/Cart">Manage bookings</NavLink>
+            <NavLink to="/DashBoard/Cart">my cart</NavLink>
           </li>
 
           <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
-            <FaUsers></FaUsers>
+            <FaMessage></FaMessage>
+            <NavLink to="/DashBoard/Cart">Add Review</NavLink>
+          </li>
 
-            <NavLink to="/DashBoard/Cart">all users</NavLink>
+          <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
+            <FaList></FaList>
+
+            <NavLink to="/DashBoard/Cart">my booking</NavLink>
           </li>
 
           <hr />
