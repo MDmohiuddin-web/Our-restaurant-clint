@@ -14,9 +14,7 @@ const D_Bord = () => {
         <img src={logo} alt="" loading="lazy" className="my-5" />
 
         <ul className="space-y-2">
-          <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
-            <NavLink to="/DashBoard/Cart">My Cart</NavLink>
-          </li>
+          
 
           <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
             <FaHome></FaHome>

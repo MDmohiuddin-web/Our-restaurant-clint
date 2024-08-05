@@ -17,6 +17,7 @@ import AuthProvider from "./AuthContext/AuthProvider";
 import CONTACTUS from "./COMPONENTS/UserAuth/CONTACTUS";
 import PrivateRouts from "./PRIVATE ROUTS/PrivateRouts";
 import Cart from "./COMPONENTS/DASHBOARD/Cart";
+import Error from "./COMPONENTS/Error/Error";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: "/",
@@ -63,6 +65,7 @@ const router = createBrowserRouter([
   {
     path: "/DashBoard",
     element: <D_Bord></D_Bord>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: "/DashBoard/Cart",
