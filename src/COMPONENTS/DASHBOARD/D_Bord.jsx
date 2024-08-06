@@ -56,30 +56,30 @@ const admin=(<>
 <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
   <FaHome></FaHome>
 
-  <NavLink to="/DashBoard/Cart">Admin Home</NavLink>
+  <NavLink to="/DashBoard/AdminHome">Admin Home</NavLink>
 </li>
 
 
 <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
 <ImSpoonKnife />
-  <NavLink to="/DashBoard/Cart">add items</NavLink>
+  <NavLink to="/DashBoard/addItems">add items</NavLink>
 </li>
 
 <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
   
 <RiMenuFold2Line />
-  <NavLink to="/DashBoard/Cart">manage items</NavLink>
+  <NavLink to="/DashBoard/manageItems">manage items</NavLink>
 </li>
 
 <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
 <FaBookmark />
-  <NavLink to="/DashBoard/Cart">Manage bookings</NavLink>
+  <NavLink to="/DashBoard/Managebookings">Manage bookings</NavLink>
 </li>
 
 <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
 <FaUsers />
 
-  <NavLink to="/DashBoard/Cart">all users</NavLink>
+  <NavLink to="/DashBoard/allUsers">all users</NavLink>
 </li></>)
 
 

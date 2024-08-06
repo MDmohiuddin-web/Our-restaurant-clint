@@ -18,6 +18,11 @@ import CONTACTUS from "./COMPONENTS/UserAuth/CONTACTUS";
 import PrivateRouts from "./PRIVATE ROUTS/PrivateRouts";
 import Cart from "./COMPONENTS/DASHBOARD/Cart";
 import Error from "./COMPONENTS/Error/Error";
+import AdminHome from "./COMPONENTS/DASHBOARD/Admin/AdminHome";
+import AddItem from "./COMPONENTS/DASHBOARD/Admin/AddItem";
+import ManageItems from "./COMPONENTS/DASHBOARD/Admin/ManageItems";
+import Managebookings from "./COMPONENTS/DASHBOARD/Admin/Managebookings";
+import Allusers from "./COMPONENTS/DASHBOARD/Admin/Allusers";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +30,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -65,13 +70,32 @@ const router = createBrowserRouter([
   {
     path: "/DashBoard",
     element: <D_Bord></D_Bord>,
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/DashBoard/Cart",
-        element:<Cart></Cart>,
+        element: <Cart></Cart>,
       },
-    ]
+      {
+        path: "/DashBoard/AdminHome",
+        element: <AdminHome></AdminHome>,
+      },{
+        path:'/DashBoard/addItems',
+        element:<AddItem></AddItem>
+      },
+      {
+        path:'/DashBoard/manageItems',
+        element:<ManageItems></ManageItems>
+      },
+      {
+        path:'/DashBoard/Managebookings',
+        element:<Managebookings></Managebookings>
+      },
+      {
+        path:'/DashBoard/allUsers',
+        element:<Allusers></Allusers>
+      }
+    ],
   },
 ]);
 
