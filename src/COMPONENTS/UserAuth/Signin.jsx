@@ -9,8 +9,10 @@ import { AuthContext } from "../../AuthContext/AuthProvider";
 import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 
 const Signin = () => {
+  const AxiosPublic = UseAxiosPublic();
   const { signin, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -49,10 +51,18 @@ const Signin = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((res) => {
+        console.log(res.user);
+        const userInfo = {
+          email: res.user.email,
+          name: res.user.displayName,
+        };
+        AxiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res.data);
+        });
+
         navigate(from);
-        console.log(res);
-        // alert("User login successfully");
-        toast.success("google SignIn successfully successfully");
+
+        toast.success("google SignIn successfully");
       })
       .catch((error) => {
         console.error(error);
@@ -150,16 +160,15 @@ const Signin = () => {
               placeholder="password"
               name="password"
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-              type={password ?  "text":"password" }
+              type={password ? "text" : "password"}
             />
             {/* password icon form react icon */}
             <div
               className="flex justify-end p-1 absolute top-10 right-5"
               onClick={showPassword}
             >
-              {password ?  <FaEye />:  <FaEyeSlash />}
+              {password ? <FaEye /> : <FaEyeSlash />}
             </div>
-
           </div>
 
           <div className="mt-4">

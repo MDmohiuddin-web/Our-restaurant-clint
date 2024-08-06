@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 const Cart = () => {
   const [cart, refetch] = UseCart();
   const axiosSecure = UseAxiosSecure();
-  const TotalPrice = cart.reduce((sum, item) => (sum = item.price), 0);
+  const TotalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+
   //   console.log(TotalPrice);
 
   const HandelDelete = (id) => {
@@ -29,8 +30,8 @@ const Cart = () => {
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
-              icon: " success",
-              
+              icon: "success",
+              confirmButtonColor: "#D99904",
             });
           }
         });

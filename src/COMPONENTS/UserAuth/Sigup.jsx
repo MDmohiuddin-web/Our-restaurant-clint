@@ -5,10 +5,14 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 
 const Sigup = () => {
-  const { createUser, googleSignIn, updateUserProfile, setUser,user } =
+  const { createUser, googleSignIn, updateUserProfile, setUser, user } =
     useContext(AuthContext);
+
+  const AxiosPublic = UseAxiosPublic();
+
   const {
     register,
     handleSubmit,
@@ -21,8 +25,8 @@ const Sigup = () => {
   console.log(location);
   const from = location.state?.from?.pathname || "/";
   console.log("state in the location login page", location.state);
-  const [password, setPassword] = useState('');
-  
+  const [password, setPassword] = useState("");
+
   const showPassword = () => {
     setPassword(!password);
   };
@@ -68,15 +72,24 @@ const Sigup = () => {
         toast.success("signup success full");
         navigate(from, { replace: true });
         updateUserProfile(data.name, data.photoURL)
-        // setUser({ ...user, photoURL: data.photoURL, displayName: data.name })
           .then(() => {
-            reset();
             //create user entry in db
             const userInfo = {
               name: data.name,
               email: data.email,
             };
             console.log(userInfo);
+            AxiosPublic.post("/users", userInfo).then((res) => {
+              console.log(res.data);
+              if (res.data.insertedId) {
+                toast.success("user added to Database success full");
+                // console.log(res.data.insertedId);
+              } else {
+                toast.error("user added to Database Unsuccess full");
+              }
+            });
+
+            reset();
           })
           .catch((error) => {
             console.error(error);
@@ -93,8 +106,17 @@ const Sigup = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((res) => {
-        navigate(from);
         console.log(res.user);
+        const userInfo = {
+          email: res.user.email,
+          name: res.user.displayName,
+        };
+        AxiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res.data);
+        });
+
+        navigate(from);
+
         toast.success("google SignIn successfully");
       })
       .catch((error) => {
@@ -223,14 +245,14 @@ const Sigup = () => {
               name="password"
               placeholder="Password"
               className="input input-bordered w-full"
-              type={password ?  "text":"password" }
+              type={password ? "text" : "password"}
             />
             {/* password icon form react icon */}
             <div
               className="flex justify-end p-1 absolute top-10 right-5"
               onClick={showPassword}
             >
-              {password ?  <FaEye />:  <FaEyeSlash />}
+              {password ? <FaEye /> : <FaEyeSlash />}
             </div>
 
             {errors.password?.type === "required" && (
