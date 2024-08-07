@@ -42,6 +42,7 @@ const Signin = () => {
         const user = res.user;
         console.log(user);
         navigate(from, { replace: true });
+        
       })
       .catch((error) => {
         console.error(error);

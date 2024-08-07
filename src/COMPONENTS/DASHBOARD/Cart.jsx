@@ -58,7 +58,7 @@ const Cart = () => {
           <button className="btn text-white bg-[#D1A054]">Pay</button>
         </div>
 
-        <div className="overflow-x-auto capitalize my-5 table-pin-rows md:h-[530px]">
+        <div className="overflow-x-auto capitalize my-5  md:h-[530px]">
           <table className="table  ">
             {/* head */}
             <thead className="bg-[#D1A054] text-white rounded-t-md  ">
@@ -77,7 +77,7 @@ const Cart = () => {
             <tbody className="mt-2 ">
               {/* row 1 */}
               {cart.map((item, index) => (
-                <tr key={item._id} className="hover:shadow-md duration-300">
+                <tr key={item._id} className="hover:shadow-md duration-300  border-none">
                   <th>
                     <label>
                       <h4>{index + 1}</h4>
