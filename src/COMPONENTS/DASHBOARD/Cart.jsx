@@ -25,6 +25,8 @@ const Cart = () => {
     .then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/cards/${id}`).then((res) => {
+          // for seeing the data is deleted or not
+          // console.log(res.data);
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({

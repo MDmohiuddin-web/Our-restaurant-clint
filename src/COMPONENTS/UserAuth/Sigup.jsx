@@ -22,9 +22,9 @@ const Sigup = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const from = location.state?.from?.pathname || "/";
-  console.log("state in the location login page", location.state);
+  // console.log("state in the location login page", location.state);
   const [password, setPassword] = useState("");
 
   const showPassword = () => {
@@ -64,11 +64,11 @@ const Sigup = () => {
   // react form using method
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         toast.success("signup success full");
         navigate(from, { replace: true });
         updateUserProfile(data.name, data.photoURL)
@@ -78,7 +78,7 @@ const Sigup = () => {
               name: data.name,
               email: data.email,
             };
-            console.log(userInfo);
+            // console.log(userInfo);
             AxiosPublic.post("/users", userInfo).then((res) => {
               console.log(res.data);
               if (res.data.insertedId) {
@@ -106,13 +106,13 @@ const Sigup = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         const userInfo = {
           email: res.user.email,
           name: res.user.displayName,
         };
         AxiosPublic.post("/users", userInfo).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
         });
 
         navigate(from);
@@ -244,6 +244,7 @@ const Sigup = () => {
               })}
               name="password"
               placeholder="Password"
+              autoComplete="off"
               className="input input-bordered w-full"
               type={password ? "text" : "password"}
             />

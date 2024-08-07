@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
-import { FaTrash } from "react-icons/fa6";
+import { FaTrash, FaUsers } from "react-icons/fa6";
 import Swal from "sweetalert2";
 
 const Allusers = () => {
@@ -13,7 +13,34 @@ const Allusers = () => {
     },
   });
 
-  const HandelDelete = (id) => {
+  const HandelMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            icon: "success",
+            title: `${user.name} is now an admin`,
+            confirmButtonColor: "#D99904",
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error making user admin:", error);
+        Swal.fire({
+          showConfirmButton: false,
+          icon: "error",
+          title: "Failed to make admin",
+          text: error.message,
+          confirmButtonColor: "#D99904",
+          timer: 1500,
+        });
+      });
+  };
+
+  const HandelDelete = (user) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -24,7 +51,9 @@ const Allusers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/users/${id}`).then((res) => {
+        axiosSecure.delete(`/users/${user._id}`).then((res) => {
+          // for seeing the data is deleted or not
+          console.log(res.data);
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
@@ -74,7 +103,7 @@ const Allusers = () => {
             <tbody className="mt-2 ">
               {users.map((user, index) => (
                 <tr
-                  key={user._id}
+                  key={user?._id}
                   className="hover:shadow-md duration-300  border-none"
                 >
                   <th>
@@ -84,13 +113,20 @@ const Allusers = () => {
                   </th>
 
                   <td>
-                    <h2>{user.name}</h2>
+                    <h2>{user?.name}</h2>
                   </td>
-                  <td> {user.email}</td>
-                  <td> role</td>
+                  <td> {user?.email}</td>
+                  <td className="p-5  ">
+                    <button
+                      className="btn bg-[#D1A054] text-white"
+                      onClick={() => HandelMakeAdmin(user)}
+                    >
+                      <FaUsers className="text-4xl bg-[#D1A054]  rounded-md p-1 text-white" />
+                    </button>
+                  </td>
                   <th>
                     <button
-                      onClick={() => HandelDelete(user._id)}
+                      onClick={() => HandelDelete(user)}
                       className="btn bg-red-600  text-white"
                     >
                       Delete <FaTrash></FaTrash>

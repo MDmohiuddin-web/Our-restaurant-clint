@@ -17,7 +17,7 @@ const Signin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log("state in the location login page", location.state);
+  // console.log("state in the location login page", location.state);
 
   const [disabled, setDisable] = useState(true);
   const [password, setPassword] = useState("");
@@ -35,14 +35,14 @@ const Signin = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     signin(email, password)
       .then((res) => {
         toast.success("User login successfully");
         const user = res.user;
-        console.log(user);
+        // console.log(user);
         navigate(from, { replace: true });
-        
+
       })
       .catch((error) => {
         console.error(error);
@@ -52,7 +52,7 @@ const Signin = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         const userInfo = {
           email: res.user.email,
           name: res.user.displayName,
@@ -158,8 +158,9 @@ const Signin = () => {
 
             <input
               required
-              placeholder="password"
               name="password"
+              autoComplete="off"
+              placeholder="password"
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
               type={password ? "text" : "password"}
             />
