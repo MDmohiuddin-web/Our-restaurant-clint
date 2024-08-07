@@ -38,17 +38,7 @@ const Cart = () => {
       }
     });
 
-    // axiosSecure
-    //   .delete(`/cards/${id}`)
-    //   .then((res) => {
-    //     console.log(res);
-    //     toast.success("Item deleted successfully")
-    //     refetch();
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error deleting item:", error);
-    //     toast.error("Item deletion failed");
-    //   });
+   
   };
 
   return (
@@ -63,15 +53,15 @@ const Cart = () => {
 
       <div>
         <div className="flex justify-between font-bold ">
-          <h2>TOTAL ORDER : {cart?.length}</h2>{" "}
+          <h2>TOTAL ORDER : {cart?.length}</h2>
           <h2>TOTAL PRICE :$ {TotalPrice} </h2>
           <button className="btn text-white bg-[#D1A054]">Pay</button>
         </div>
 
-        <div className="overflow-x-auto capitalize my-5 ">
-          <table className="table">
+        <div className="overflow-x-auto capitalize my-5 table-pin-rows md:h-[530px]">
+          <table className="table  ">
             {/* head */}
-            <thead className="bg-[#D1A054] text-white rounded-t-md ">
+            <thead className="bg-[#D1A054] text-white rounded-t-md  ">
               <tr>
                 <th>
                   <label>
@@ -84,10 +74,10 @@ const Cart = () => {
                 <th>action</th>
               </tr>
             </thead>
-            <tbody className="mt-2">
+            <tbody className="mt-2 ">
               {/* row 1 */}
               {cart.map((item, index) => (
-                <tr key={item._id}>
+                <tr key={item._id} className="hover:shadow-md duration-300">
                   <th>
                     <label>
                       <h4>{index + 1}</h4>
