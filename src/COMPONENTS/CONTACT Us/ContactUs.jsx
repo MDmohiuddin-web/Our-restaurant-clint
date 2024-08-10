@@ -42,7 +42,13 @@ const ContactUs = () => {
           <p>view</p>
           <p>like</p>
         </div>
+
+        
+
+
       </div>
+
+      
     </div>
   );
 };
