@@ -16,34 +16,34 @@ const FoodCard = ({ item }) => {
 
   const addToCart = (food) => {
     if (user && user.email) {
-      console.log(user.email, food);
-      //send cart item to the database
-      const cartItem = {
+      // console.log(user.email, food);
+      //send Cart item to the database
+      const CartItem = {
         menuId: _id,
         email: user.email,
         name,
         image,
         price,
       };
-      // console.log(cartItem);
+      // console.log(CartItem);
       // axiosSecure using hook
       axiosSecure
-        .post("/cards", cartItem)
+        .post("/cards", CartItem)
         .then((res) => {
           console.log(res.data);
           if (res.data.insertedId) {
-            toast.success(`"${name}" added to cart successfully`);
-            // refetch cart to update the cart items count
+            toast.success(`"${name}" added to Cart successfully`);
+            // refetch Cart to update the Cart items count
             refetch();
           } else {
-            toast.error(`"${name}" added to cart Unsuccessfully`);
+            toast.error(`"${name}" added to Cart Unsuccessfully`);
           }
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      toast.error("Please login to add to cart");
+      toast.error("Please login to add to Cart");
       navigate("/Login", { state: { from: location } });
     }
     console.log(food);
@@ -69,7 +69,7 @@ const FoodCard = ({ item }) => {
           >
             <span className="w-full h-0.5 absolute bottom-0 group-active:bg-transparent left-0 bg-white"></span>
             <span className="h-full w-0.5 absolute bottom-0 group-active:bg-transparent right-0 bg-white"></span>
-            add to cart
+            add to Cart
           </Link>
         </div>
       </div>

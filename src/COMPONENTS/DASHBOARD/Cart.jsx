@@ -1,14 +1,16 @@
-import React from "react";
 import UseCart from "../../Hooks/UseCart";
 import { FaTrash } from "react-icons/fa6";
+import Swal from "sweetalert2";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 
-import Swal from "sweetalert2";
-
 const Cart = () => {
-  const [cart, refetch] = UseCart();
+  const [Cart, refetch] = UseCart();
+
+  console.log(Cart);
+  
   const axiosSecure = UseAxiosSecure();
-  const TotalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+  const TotalPrice = Cart.reduce((sum, item) => sum + item.price, 0);
+  console.log(TotalPrice)
 
   //   console.log(TotalPrice);
 
@@ -34,7 +36,7 @@ const Cart = () => {
               text: "Your file has been deleted.",
               icon: "success",
               confirmButtonColor: "#D99904",
-            });
+            }); 
           }
         });
       }
@@ -55,7 +57,7 @@ const Cart = () => {
 
       <div>
         <div className="flex justify-between font-bold ">
-          <h2>TOTAL ORDER : {cart?.length}</h2>
+          <h2>TOTAL ORDER : {Cart?.length}</h2>
           <h2>TOTAL PRICE :$ {TotalPrice} </h2>
           <button className="btn text-white bg-[#D1A054]">Pay</button>
         </div>
@@ -78,7 +80,7 @@ const Cart = () => {
             </thead>
             <tbody className="mt-2 ">
               {/* row 1 */}
-              {cart.map((item, index) => (
+              {Cart.map((item, index) => (
                 <tr key={item._id} className="hover:shadow-md duration-300  border-none">
                   <th>
                     <label>

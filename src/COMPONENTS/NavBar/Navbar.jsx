@@ -8,7 +8,7 @@ import UseCart from "../../Hooks/UseCart";
  
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [cart]=UseCart()
+  const [Cart]=UseCart()
 
   
   const logout = () => {
@@ -127,7 +127,7 @@ const Navbar = () => {
                   />
                 </svg>
                 <span className="badge badge-sm indicator-item text-white bg-yellow-500 border-none font-bold">
-                  {`+${cart?.length || 0}`}
+                  {`+${Cart?.length || 0}`}
                 </span>
               </div>
             </Link>

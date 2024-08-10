@@ -37,7 +37,7 @@ const D_Bord = () => {
   <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
     <MdBookmarkAdd />
 
-    <NavLink to="/DashBoard/Cart">my cart</NavLink>
+    <NavLink to="/DashBoard/Cart">my Cart</NavLink>
   </li>
 
   <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
