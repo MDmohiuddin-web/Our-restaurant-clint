@@ -46,13 +46,13 @@ export const AuthContext = createContext(null);
 
   const logOut = () => {
     setLoading(true);
-    return signOut(auth);
+    return signOut(auth); 
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
+      console.log(currentUser); 
       if (currentUser) {
         // get token store clint
 
@@ -69,7 +69,7 @@ export const AuthContext = createContext(null);
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [AxiosPublic]);
 
   const auth_info = {
     user,

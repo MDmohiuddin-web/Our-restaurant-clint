@@ -20,7 +20,7 @@ const UseCart = () => {
     queryFn: async () => {
       try {
         const res = await axiosSecure.get(`/cards?email=${user?.email}`);
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       } catch (error) {
         console.error("Error fetching cart data:", error) 
