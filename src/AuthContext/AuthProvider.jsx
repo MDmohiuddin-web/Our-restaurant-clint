@@ -10,16 +10,15 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/Firebase.config";
+import UseAxiosPublic from "../Hooks/UseAxiosPublic";
 
 export const AuthContext = createContext(null);
-const auth = getAuth(app);
-
-
-const AuthProvider = ({ children }) => {
-
+  const auth = getAuth(app);
+  const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
+  const AxiosPublic = UseAxiosPublic();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -36,10 +35,9 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-
   const updateUserProfile = (name, photo) => {
     setLoading(true);
-    
+
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
@@ -47,13 +45,25 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    setLoading(true)
+    setLoading(true);
     return signOut(auth);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
+      if (currentUser) {
+        // get token store clint
+
+        AxiosPublic.post("/jwt", { email: currentUser.email }).then((res) => {
+          console.log(res.data.token);
+          localStorage.setItem("access-token", res.data.token);
+        });
+      } else {
+        // todo : remove token
+        localStorage.removeItem("access-token");
+      }
       setLoading(false);
     });
     return () => {
@@ -69,12 +79,10 @@ const AuthProvider = ({ children }) => {
     logOut,
     createUser,
     googleSignIn,
-    updateUserProfile
+    updateUserProfile,
   };
   return (
-    <AuthContext.Provider value={auth_info }>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={auth_info}>{children}</AuthContext.Provider>
   );
 };
 
