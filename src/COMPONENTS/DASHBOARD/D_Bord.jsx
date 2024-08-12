@@ -16,10 +16,12 @@ import {
 } from "react-icons/fa6";
 import { ImSpoonKnife } from "react-icons/im";
 import { RiMenuFold2Line } from "react-icons/ri";
+import UseAdmin from "../../Hooks/UseAdmin";
 
 const D_Bord = () => {
 // for common user
-  const common=(<><li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
+  const common=(
+  <div><li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
     <FaHome></FaHome>
 
     <NavLink to="/DashBoard/Cart">User Home</NavLink>
@@ -49,10 +51,11 @@ const D_Bord = () => {
     <FaList></FaList>
 
     <NavLink to="/DashBoard/Cart">my booking</NavLink>
-  </li></>)
+  </li>
+  </div>)
 
 //for admin user
-const admin=(<>
+const admin=(<div>
 <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
   <FaHome></FaHome>
 
@@ -80,17 +83,20 @@ const admin=(<>
 <FaUsers />
 
   <NavLink to="/DashBoard/allUsers">all users</NavLink>
-</li></>)
+</li></div>)
 
 
 
 
   // todo: get isAdmin from Database
-  const isAdmin=true;
+  const [isAdmin]=UseAdmin();
+  // const isAdmin=false
+  
+
   return (
     <div className="flex capitalize">
       {/* sidebar */}
-      <div className="m-auto w-[20%] h-svh bg-[#D1A054] p-5">
+      <div className="m-auto w-[20%] min-h-svh  bg-[#D1A054] p-5">
         <img src={logo} alt="" loading="lazy" className="my-5" />
 
         <ul className="space-y-2 uppercase">

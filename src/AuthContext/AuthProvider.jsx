@@ -52,12 +52,12 @@ export const AuthContext = createContext(null);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser); 
+      // console.log(currentUser); 
       if (currentUser) {
         // get token store clint
 
         AxiosPublic.post("/jwt", { email: currentUser.email }).then((res) => {
-          console.log(res.data.token);
+          // console.log(res.data.token);
           localStorage.setItem("access-token", res.data.token);
         });
       } else {

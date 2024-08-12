@@ -6,11 +6,11 @@ import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 const Cart = () => {
   const [Cart, refetch] = UseCart();
 
-  console.log(Cart);
+  // console.log(Cart);
   
   const axiosSecure = UseAxiosSecure();
   const TotalPrice = Cart.reduce((sum, item) => sum + item.price, 0);
-  console.log(TotalPrice)
+  // console.log(TotalPrice)
 
   //   console.log(TotalPrice);
 
@@ -62,7 +62,7 @@ const Cart = () => {
           <button className="btn text-white bg-[#D1A054]">Pay</button>
         </div>
 
-        <div className="overflow-x-auto capitalize my-5  md:h-[530px]">
+        <div className="overflow-x-auto capitalize my-5  md:h-[530px] ">
           <table className="table  ">
             {/* head */}
             <thead className="bg-[#D1A054] text-white rounded-t-md  ">

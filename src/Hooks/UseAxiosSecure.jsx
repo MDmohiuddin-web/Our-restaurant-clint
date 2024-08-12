@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AuthContext } from "../AuthContext/AuthProvider";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
  const axiosSecure = axios.create({
@@ -19,7 +19,7 @@ const UseAxiosSecure = () => {
         // console.log("request sent");
         // get token from local storage
         const token = localStorage.getItem("access-token");
-        console.log('request stop by interceptor',token);
+        // console.log('request stop by interceptor',token);
         if (token) {
             config.headers.authorization = `Bearer ${token}`;
         }
@@ -34,8 +34,18 @@ const UseAxiosSecure = () => {
         //for 401 or 403 logout the user and navigate the user to login page
 
         if (status === 401 || status === 403) {
-            await logOut();
-            navigate('/login')
+            useEffect(()=>{
+                logOut()
+                .then(()=>{
+                    navigate('/login')
+                })
+                .catch((error)=>{
+                    console.log(error);
+                })
+            },[])
+            
+            // 
+            
         }
             return Promise.reject(error);
         }

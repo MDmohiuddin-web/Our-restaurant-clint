@@ -78,22 +78,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/DashBoard/AdminHome",
-        element: <AdminHome></AdminHome>,
+        element:<PrivateRouts><AdminHome></AdminHome></PrivateRouts> ,
       },{
         path:'/DashBoard/addItems',
-        element:<AddItem></AddItem>
+        element:<PrivateRouts><AddItem></AddItem></PrivateRouts>
       },
       {
         path:'/DashBoard/manageItems',
-        element:<ManageItems></ManageItems>
+        element:<PrivateRouts><ManageItems></ManageItems></PrivateRouts>
       },
       {
         path:'/DashBoard/Managebookings',
-        element:<Managebookings></Managebookings>
+        element:<PrivateRouts><Managebookings></Managebookings></PrivateRouts>
       },
       {
         path:'/DashBoard/allUsers',
-        element:<Allusers></Allusers>
+        element:<PrivateRouts><Allusers></Allusers></PrivateRouts>
       }
     ],
   },
