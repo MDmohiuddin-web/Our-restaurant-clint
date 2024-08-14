@@ -14,7 +14,6 @@ import Profile from "./COMPONENTS/UserAuth/Profile";
 import OurMenu from "./COMPONENTS/Our Menu/OurMenu";
 import OurShop from "./COMPONENTS/Our Shop/OurShop";
 import AuthProvider from "./AuthContext/AuthProvider";
-import CONTACTUS from "./COMPONENTS/UserAuth/CONTACTUS";
 import PrivateRouts from "./PRIVATE ROUTS/PrivateRouts";
 import Cart from "./COMPONENTS/DASHBOARD/Cart";
 import Error from "./COMPONENTS/Error/Error";
@@ -23,6 +22,7 @@ import AddItem from "./COMPONENTS/DASHBOARD/Admin/AddItem";
 import ManageItems from "./COMPONENTS/DASHBOARD/Admin/ManageItems";
 import Managebookings from "./COMPONENTS/DASHBOARD/Admin/Managebookings";
 import Allusers from "./COMPONENTS/DASHBOARD/Admin/Allusers";
+import ContactUs from "./COMPONENTS/CONTACT Us/ContactUs";
 
 const queryClient = new QueryClient();
 
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/ContactUs",
-        element: <CONTACTUS></CONTACTUS>,
+        element:<ContactUs></ContactUs> ,
       },
       {
         path: "/OurMenu",
