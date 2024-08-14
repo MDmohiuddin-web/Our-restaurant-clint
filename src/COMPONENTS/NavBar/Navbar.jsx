@@ -5,12 +5,11 @@ import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import UseCart from "../../Hooks/UseCart";
- 
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [Cart]=UseCart()
+  const [Cart] = UseCart();
 
-  
   const logout = () => {
     logOut()
       .then(() => {
@@ -19,7 +18,7 @@ const Navbar = () => {
       })
       .catch((error) => {
         console.error(error);
-        toast.error("User logOut Unsuccessfully")
+        toast.error("User logOut Unsuccessfully");
         // alert("User logOut successfully");
       });
   };
@@ -28,7 +27,7 @@ const Navbar = () => {
     <>
       <li className="hover:text-my_color-400">
         <NavLink to="/" className="hover:text-yellow-400">
-          Home{" "}
+          Home
         </NavLink>
       </li>
       <li className="hover:text-my_color-400">
@@ -93,8 +92,9 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-
-        <img src={navlogo} alt="" />
+        <Link to="/">
+          <img src={navlogo} alt="" />
+        </Link>
       </div>
 
       <div className="navbar-end">
@@ -104,11 +104,10 @@ const Navbar = () => {
         {/*  */}
         <div className="flex gap-5 text-black">
           <div className="dropdown dropdown-end">
-            <Link 
-            to='/DashBoard/Cart'
+            <Link
+              to="/DashBoard/Cart"
               tabIndex={0}
               role="button"
-              
               className="btn btn-ghost btn-circle"
             >
               <div className="indicator">
@@ -131,7 +130,6 @@ const Navbar = () => {
                 </span>
               </div>
             </Link>
-            
           </div>
 
           <div className="dropdown dropdown-end">

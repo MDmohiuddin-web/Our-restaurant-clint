@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import { FaTrash } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -44,6 +44,7 @@ const Allusers = () => {
       });
   };
   // alternative way to make admin user
+  
   // const HandelMakeAdmin = (user) => {
   //   axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
   //     console.log(res.data);

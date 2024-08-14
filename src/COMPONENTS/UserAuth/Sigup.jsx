@@ -27,7 +27,9 @@ const Sigup = () => {
   // console.log("state in the location login page", location.state);
   const [password, setPassword] = useState("");
 
+
   const showPassword = () => {
+    // see password 
     setPassword(!password);
   };
 

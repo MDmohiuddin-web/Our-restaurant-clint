@@ -21,8 +21,9 @@ import AdminHome from "./COMPONENTS/DASHBOARD/Admin/AdminHome";
 import AddItem from "./COMPONENTS/DASHBOARD/Admin/AddItem";
 import ManageItems from "./COMPONENTS/DASHBOARD/Admin/ManageItems";
 import Managebookings from "./COMPONENTS/DASHBOARD/Admin/Managebookings";
-import Allusers from "./COMPONENTS/DASHBOARD/Admin/Allusers";
+import Allusers from "./COMPONENTS/DASHBOARD/Admin/All Users/Allusers";
 import ContactUs from "./COMPONENTS/CONTACT Us/ContactUs";
+import AdminRoute from "./ADMINROUTS/AdminRoute";
 
 const queryClient = new QueryClient();
 
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/DashBoard",
-    element: <D_Bord></D_Bord>,
+    element:<PrivateRouts><D_Bord></D_Bord></PrivateRouts> ,
     errorElement: <Error></Error>,
     children: [
       {
@@ -78,22 +79,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/DashBoard/AdminHome",
-        element:<PrivateRouts><AdminHome></AdminHome></PrivateRouts> ,
+        element:<AdminRoute><AdminHome></AdminHome></AdminRoute> ,
       },{
         path:'/DashBoard/addItems',
-        element:<PrivateRouts><AddItem></AddItem></PrivateRouts>
+        element:<AdminRoute><AddItem></AddItem></AdminRoute>
       },
       {
         path:'/DashBoard/manageItems',
-        element:<PrivateRouts><ManageItems></ManageItems></PrivateRouts>
+        element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
       },
       {
         path:'/DashBoard/Managebookings',
-        element:<PrivateRouts><Managebookings></Managebookings></PrivateRouts>
+        element:<AdminRoute><Managebookings></Managebookings></AdminRoute>
       },
       {
         path:'/DashBoard/allUsers',
-        element:<PrivateRouts><Allusers></Allusers></PrivateRouts>
+        element:<AdminRoute><Allusers></Allusers></AdminRoute>
       }
     ],
   },
