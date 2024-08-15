@@ -5,8 +5,9 @@ import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import UseCart from "../../Hooks/UseCart";
+import profilepic from "../../assets/Resources/others/profile.png";
 
-const Navbar = () => {
+const Navbar = () => { 
   const { user, logOut } = useContext(AuthContext);
   const [Cart] = UseCart();
 
@@ -145,7 +146,7 @@ const Navbar = () => {
                   title={user?.displayName}
                   src={
                     user?.photoURL ||
-                    "https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                    profilepic
                   }
                 />
               </div>
