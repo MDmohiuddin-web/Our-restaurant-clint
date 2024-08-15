@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import UseAxiosPublic from "../../../Hooks/UseAxiosPublic";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 
+
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -23,36 +24,36 @@ const AddItem = () => {
       },
     });
 
-    // if (res.data.success) {
-    //   // now send the menu item data to the server with the image url
-    //   const menuItem = {
-    //     name: data.name,
-    //     category: data.category,
-    //     price: parseFloat(data.price),
-    //     recipe: data.recipe,
-    //     image: res.data.data.display_url,
-    //   };
-    //   //
-    //   const menuRes = await axiosSecure.post("/menu", menuItem);
-    //   console.log(menuRes.data);
-    //   // if (menuRes.data.insertedId) {
-    //   //   // show success popup
-    //   //   reset();
-    //   //   Swal.fire({
-    //   //     position: "top-end",
-    //   //     icon: "success",
-    //   //     title: `${data.name} is added to the menu.`,
-    //   //     showConfirmButton: false,
-    //   //     timer: 1500,
-    //   //   });
-    //   // }
-    // }
+    if (res.data.success) {
+      // now send the menu item data to the server with the image url
+      const menuItem = {
+        name: data.name,
+        category: data.category,
+        price: parseFloat(data.price),
+        recipe: data.recipe,
+        image: res.data.data.display_url,
+      };
+      //
+      const menuRes = await axiosSecure.post("/menu", menuItem);
+      console.log(menuRes.data);
+      if (menuRes.data.insertedId) {
+        // show success popup
+        reset();
+        Swal.fire({
+          text: "Your file has been uploaded.",
+          icon: "success",
+          title: `${data.name} is added to the menu.`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    }
     console.log("with image url", res.data);
   };
 
   return (
     <div>
-      <div className="md:w-1/3 mx-auto p-5 text-center">
+      <div className="md:w-1/2 mx-auto p-5 text-center">
         <p className="text-[#D99904] text-xl">---What's new?---</p>
         <h2 className="border-y-2 text-2xl border-gray-400 my-5 py-5">
           ADD AN ITEM

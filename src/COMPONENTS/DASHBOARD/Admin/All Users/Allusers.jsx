@@ -105,8 +105,8 @@ const Allusers = () => {
   };
 
   return (
-    <div className="mx-auto w-4/5 h-svh ">
-      <div className="md:w-1/3 m-auto p-5 text-center mx-auto">
+    <div className="mx-auto w-[90%] h-svh ">
+      <div className="md:w-1/2 m-auto p-5 text-center mx-auto">
         <p className="text-[#D99904] text-xl">---How many Users ?---</p>
         <h2 className="border-y-2 text-2xl border-gray-400 my-5 py-5">
           MANAGE ALL USERS
