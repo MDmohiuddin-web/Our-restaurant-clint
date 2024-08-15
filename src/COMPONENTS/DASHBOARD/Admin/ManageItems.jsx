@@ -2,38 +2,49 @@ import { FaTrash } from "react-icons/fa6";
 import UseMenu from "../../../Hooks/UseMenu";
 import { FaRegEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
+import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 
 const ManageItems = () => {
-  const [menu] = UseMenu();
-
-
+  const [menu, ,refetch] = UseMenu();
+  const axiosSecure = UseAxiosSecure();
 
   const HandelDelete = (item) => {
-   console.log(item)
-   Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#D99904",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  })
-    .then((result) => {
-        if(result.isConfirmed){
-            //make delete request 
-
-
-
+    console.log(item);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#D99904",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        //make delete request
+       const res=await axiosSecure.delete(`/menu/${item._id}`);
+       console.log(res.data);
+       if (res.data.deletedCount > 0) {
+        refetch()
+        // refetch data for updating the data
+          // show success popup
+          Swal.fire({
+            
+            title:`${item.name} is deleted`,
+            
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-
-    })
+       
+       
+      }
+    });
   };
 
-
-  const HandelUpdate=(item)=>{
-    console.log(item)
-  }
+  const HandelUpdate = (item) => {
+    console.log(item);
+  };
 
   return (
     <div className="mx-auto w-[90%] h-svh ">
@@ -88,7 +99,6 @@ const ManageItems = () => {
                     </div>
                   </td>
 
-                  
                   <td>
                     <h2>{item?.name}</h2>
                   </td>
@@ -104,12 +114,12 @@ const ManageItems = () => {
                       className="btn bg-[#D1A054] text-white flex items-center justify-center text-center"
                       onClick={() => HandelUpdate(item)}
                     >
-                      <FaRegEdit  className="text-4xl bg-[#D1A054]  rounded-md p-1 text-white " />
+                      <FaRegEdit className="text-4xl bg-[#D1A054]  rounded-md p-1 text-white " />
                     </button>
                   </td>
                   <th>
                     <button
-                        onClick={() => HandelDelete(item)}
+                      onClick={() => HandelDelete(item)}
                       className="btn bg-red-600  text-white flex items-center justify-center"
                     >
                       Delete <FaTrash></FaTrash>
@@ -126,5 +136,3 @@ const ManageItems = () => {
 };
 
 export default ManageItems;
-
-

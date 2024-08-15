@@ -13,6 +13,7 @@ import {
   FaMessage,
   FaWallet,
 } from "react-icons/fa6";
+import { GrDocumentUpdate } from "react-icons/gr";
 
 
 const D_Bord = () => {
@@ -65,6 +66,10 @@ const D_Bord = () => {
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
         <ImSpoonKnife />
         <NavLink to="/DashBoard/addItems">add items</NavLink>
+      </li>
+      <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
+      <GrDocumentUpdate />
+        <NavLink to="/DashBoard/UpdateItem">Update Item</NavLink>
       </li>
 
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">

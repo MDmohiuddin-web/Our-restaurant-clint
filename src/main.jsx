@@ -24,6 +24,7 @@ import Managebookings from "./COMPONENTS/DASHBOARD/Admin/Managebookings";
 import Allusers from "./COMPONENTS/DASHBOARD/Admin/All Users/Allusers";
 import ContactUs from "./COMPONENTS/CONTACT Us/ContactUs";
 import AdminRoute from "./ADMINROUTS/AdminRoute";
+import UpdateItem from "./COMPONENTS/DASHBOARD/Admin/All Users/UpdateItem";
 
 const queryClient = new QueryClient();
 
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
       {
         path:'/DashBoard/allUsers',
         element:<AdminRoute><Allusers></Allusers></AdminRoute>
+      },
+      {
+        path:'/DashBoard/UpdateItem',
+        element:<UpdateItem></UpdateItem>
       }
     ],
   },
