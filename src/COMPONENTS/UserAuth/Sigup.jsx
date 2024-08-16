@@ -23,8 +23,8 @@ const Sigup = () => {
   const navigate = useNavigate();
   const location = useLocation();
   // console.log(location);
-  const from = location.state?.from?.pathname || "/";
-  // console.log("state in the location login page", location.state);
+  const from = location.state?.from?.pathname || '/';
+  // console.log('state from the location', location.state)
   const [password, setPassword] = useState("");
 
 
@@ -69,8 +69,8 @@ const Sigup = () => {
     // console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
-        const loggedUser = result.user;
-        // console.log(loggedUser);
+        
+        console.log(result.user);
         toast.success("signup success full");
         navigate(from, { replace: true });
         updateUserProfile(data.name, data.photoURL)
@@ -117,7 +117,7 @@ const Sigup = () => {
           // console.log(res.data);
         });
 
-        navigate(from);
+        navigate(from, { replace: true });
 
         toast.success("google SignIn successfully");
       })

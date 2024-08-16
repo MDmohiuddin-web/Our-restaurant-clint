@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const UpdateItem = () => {
-    const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
   };
@@ -12,7 +12,7 @@ const UpdateItem = () => {
       <div className="md:w-1/2 mx-auto p-5 text-center">
         <p className="text-[#D99904] text-xl">---What's new?---</p>
         <h2 className="border-y-2 text-2xl border-gray-400 my-5 py-5">
-        UPDATE ITEM
+          UPDATE ITEM
         </h2>
       </div>
       {/*  */}

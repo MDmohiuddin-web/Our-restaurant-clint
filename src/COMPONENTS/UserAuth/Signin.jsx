@@ -16,8 +16,8 @@ const Signin = () => {
   const { signin, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-  // console.log("state in the location login page", location.state);
+  const from = location.state?.from?.pathname || '/';
+  // console.log('state from the location', location.state)
 
   const [disabled, setDisable] = useState(true);
   const [password, setPassword] = useState("");
@@ -61,7 +61,7 @@ const Signin = () => {
           // console.log(res.data);
         });
 
-        navigate(from);
+        navigate(from, { replace: true });
 
         toast.success("google SignIn successfully");
       })
