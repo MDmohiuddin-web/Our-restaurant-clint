@@ -10,9 +10,9 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItem = () => {
+  const { register, handleSubmit ,reset} = useForm();
   const axiosPublic = UseAxiosPublic();
   const axiosSecure = UseAxiosSecure();
-  const { register, handleSubmit ,reset} = useForm();
 
   const onSubmit = async (data) => {
     console.log(data);

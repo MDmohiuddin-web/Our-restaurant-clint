@@ -17,6 +17,7 @@ import { GrDocumentUpdate } from "react-icons/gr";
 
 
 const D_Bord = () => {
+  
   // for common user
   const common = (
     <div>
@@ -67,10 +68,10 @@ const D_Bord = () => {
         <ImSpoonKnife />
         <NavLink to="/DashBoard/addItems">add items</NavLink>
       </li>
-      <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
+      {/* <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
       <GrDocumentUpdate />
         <NavLink to="/DashBoard/UpdateItem">Update Item</NavLink>
-      </li>
+      </li> */}
 
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
         <RiMenuFold2Line />

@@ -25,6 +25,7 @@ import Allusers from "./COMPONENTS/DASHBOARD/Admin/All Users/Allusers";
 import ContactUs from "./COMPONENTS/CONTACT Us/ContactUs";
 import AdminRoute from "./ADMINROUTS/AdminRoute";
 import UpdateItem from "./COMPONENTS/DASHBOARD/Admin/All Users/UpdateItem";
+import Payment from "./COMPONENTS/DASHBOARD/PAYMENT/Payment";
 
 const queryClient = new QueryClient();
 
@@ -79,11 +80,23 @@ const router = createBrowserRouter([
         element: <Cart></Cart>,
       },
       {
+        path:'/DashBoard/Payment',
+        element:<Payment></Payment>
+      },
+      {
         path: "/DashBoard/AdminHome",
         element:<AdminRoute><AdminHome></AdminHome></AdminRoute> ,
       },{
         path:'/DashBoard/addItems',
         element:<AdminRoute><AddItem></AddItem></AdminRoute>
+      },
+      
+      {
+        path:'/DashBoard/UpdateItem/:id',
+        element:<AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+        loader:({params})=>fetch(`http://localhost:9585/menu/${params.id}`),
+        
+        
       },
       {
         path:'/DashBoard/manageItems',
@@ -96,10 +109,6 @@ const router = createBrowserRouter([
       {
         path:'/DashBoard/allUsers',
         element:<AdminRoute><Allusers></Allusers></AdminRoute>
-      },
-      {
-        path:'/DashBoard/UpdateItem',
-        element:<UpdateItem></UpdateItem>
       }
     ],
   },

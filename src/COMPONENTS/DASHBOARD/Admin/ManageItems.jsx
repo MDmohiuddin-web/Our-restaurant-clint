@@ -3,6 +3,7 @@ import UseMenu from "../../../Hooks/UseMenu";
 import { FaRegEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, ,refetch] = UseMenu();
@@ -110,12 +111,13 @@ const ManageItems = () => {
                   </td>
 
                   <td className="p-5  ">
-                    <button
+                    <Link
+                    to={`/dashboard/updateItem/${item._id}`}
                       className="btn bg-[#D1A054] text-white flex items-center justify-center text-center"
                       onClick={() => HandelUpdate(item)}
                     >
                       <FaRegEdit className="text-4xl bg-[#D1A054]  rounded-md p-1 text-white " />
-                    </button>
+                    </Link>
                   </td>
                   <th>
                     <button
