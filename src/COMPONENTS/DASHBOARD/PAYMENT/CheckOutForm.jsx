@@ -61,7 +61,7 @@ const CheckOutForm = () => {
       console.log("payment error", error);
       setError(error.message);
     } else {
-    //   console.log("payment method", paymentMethod);
+      console.log("payment method", paymentMethod);
       setError("");
     }
 
@@ -96,19 +96,19 @@ const CheckOutForm = () => {
           status: "pending",
         };
 
-        const res = await axiosSecure.post("/payments", payment);
-        console.log("payment saved", res.data);
-        refetch();
-        if (res.data?.paymentResult?.insertedId) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Thank you for the taka paisa",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          navigate("/dashboard/paymentHistory");
-        }
+        const res = await axiosSecure.post('/payments', payment);
+      console.log('payment saved', res.data);
+      // refetch();
+      // if (res.data?.paymentResult?.insertedId) {
+      //     Swal.fire({
+      //         position: "top-end",
+      //         icon: "success",
+      //         title: "Thank you for the taka paisa",
+      //         showConfirmButton: false,
+      //         timer: 1500
+      //     });
+      //     // navigate('/dashboard/paymentHistory')
+      // }
       }
     }
   };
