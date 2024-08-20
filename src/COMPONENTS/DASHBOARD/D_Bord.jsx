@@ -99,12 +99,12 @@ const D_Bord = () => {
     <div className="flex capitalize">
       {/* sidebar */}
       <div className="m-auto w-[20%] min-h-svh  bg-[#D1A054] p-5">
-        {/* <img src={logo} alt="" loading="lazy" className="my-5" /> */}
+       
         <Link to="/">
           <img src={logo} alt="" />
         </Link>
 
-        <ul className="space-y-2 uppercase">
+        <ul className="space-y-5 uppercase">
           {isAdmin ? <>{admin}</> : <>{common}</>}
 
           {/*  */}

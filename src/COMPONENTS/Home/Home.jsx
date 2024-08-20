@@ -45,7 +45,7 @@ const Home = () => {
       {/*  */}
       <Cardcheprecomendet></Cardcheprecomendet>
 
-      <div className=" m-auto my-10 bg_img flex flex-col justify-center items-center rounded-lg p-10">
+      <div className=" m-auto my-10 bg_img bg-fixed flex flex-col justify-center items-center rounded-lg p-10">
         <div className=" md:w-4/5 ">
           <div className="md:w-1/3 m-auto p-5 text-center">
             <p className="text-[#D99904] text-xl">---Check it out---</p>
