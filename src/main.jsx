@@ -26,6 +26,8 @@ import ContactUs from "./COMPONENTS/CONTACT Us/ContactUs";
 import AdminRoute from "./ADMINROUTS/AdminRoute";
 import UpdateItem from "./COMPONENTS/DASHBOARD/Admin/All Users/UpdateItem";
 import Payment from "./COMPONENTS/DASHBOARD/PAYMENT/Payment";
+import PaymentHistory from "./COMPONENTS/DASHBOARD/PaymentHistory/PaymentHistory";
+import UserHome from "./COMPONENTS/DASHBOARD/User/UserHome";
 
 const queryClient = new QueryClient();
 
@@ -80,8 +82,15 @@ const router = createBrowserRouter([
         element: <Cart></Cart>,
       },
       {
+        path:'/DashBoard/UserHome',
+        element:<PrivateRouts><UserHome></UserHome></PrivateRouts>
+      },
+      {
         path:'/DashBoard/Payment',
         element:<Payment></Payment>
+      },{
+        path:'/DashBoard/PaymentHistory',
+        element:<PrivateRouts><PaymentHistory></PaymentHistory></PrivateRouts>
       },
       {
         path: "/DashBoard/AdminHome",

@@ -74,7 +74,7 @@ const Cart = () => {
               <tr>
                 <th>
                   <label>
-                    <h4>quantity</h4>
+                    <h4>Serial</h4>
                   </label>
                 </th>
                 <th>item image</th>

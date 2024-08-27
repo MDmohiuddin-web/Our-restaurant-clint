@@ -13,7 +13,8 @@ import {
   FaMessage,
   FaWallet,
 } from "react-icons/fa6";
-import { GrDocumentUpdate } from "react-icons/gr";
+
+
 
 
 const D_Bord = () => {
@@ -24,7 +25,7 @@ const D_Bord = () => {
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
         <FaHome></FaHome>
 
-        <NavLink to="/DashBoard/Cart">User Home</NavLink>
+        <NavLink to="/DashBoard/UserHome">User Home</NavLink>
       </li>
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
         <FaCalendar></FaCalendar>
@@ -33,7 +34,7 @@ const D_Bord = () => {
 
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
         <FaWallet></FaWallet>
-        <NavLink to="/DashBoard/Cart">Payment History</NavLink>
+        <NavLink to="/DashBoard/PaymentHistory">Payment History</NavLink>
       </li>
 
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
@@ -104,7 +105,7 @@ const D_Bord = () => {
           <img src={logo} alt="" />
         </Link>
 
-        <ul className="space-y-5 uppercase">
+        <ul className="space-y-2 uppercase">
           {isAdmin ? <>{admin}</> : <>{common}</>}
 
           {/*  */}

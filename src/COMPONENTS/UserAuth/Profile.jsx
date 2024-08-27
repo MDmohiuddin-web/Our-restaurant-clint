@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import profilepic from "../../assets/Resources/others/profile.png";
  
 
 const Profile = () => {
   const { updateUserProfile, user,setUser } = useContext(AuthContext);
-  const navigate=useNavigate()
+  // const navigate=useNavigate()
 
   // const onSubmit = (e) => {
   //   e.preventDefault();

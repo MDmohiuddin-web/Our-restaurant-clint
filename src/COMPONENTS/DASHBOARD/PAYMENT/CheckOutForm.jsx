@@ -4,6 +4,7 @@ import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import UseCart from "../../../Hooks/UseCart";
 import UseAuth from "../../../Hooks/UseAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckOutForm = () => {
   /**
@@ -26,6 +27,7 @@ const CheckOutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = UseAuth();
+  const navigate=useNavigate()
 
   useEffect(() => {
     if (totalPrice > 0) {
@@ -108,7 +110,7 @@ const CheckOutForm = () => {
               showConfirmButton: false,
               timer: 1500
           });
-          // navigate('/dashboard/PaymentHistory')
+          navigate('/DashBoard/PaymentHistory')
       }
       }
     }
