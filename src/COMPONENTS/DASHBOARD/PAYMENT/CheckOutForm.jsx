@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import UseCart from "../../../Hooks/UseCart";
 import UseAuth from "../../../Hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const CheckOutForm = () => {
   /**
@@ -20,7 +21,7 @@ const CheckOutForm = () => {
   const [transactionId, setTransactionId] = useState('');
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  const [Cart] = UseCart();
+  const [Cart,refetch] = UseCart();
   const totalPrice = Cart.reduce((total, item) => total + item.price, 0);
   const stripe = useStripe();
   const elements = useElements();
@@ -98,17 +99,17 @@ const CheckOutForm = () => {
 
         const res = await axiosSecure.post('/payments', payment);
       console.log('payment saved', res.data);
-      // refetch();
-      // if (res.data?.paymentResult?.insertedId) {
-      //     Swal.fire({
-      //         position: "top-end",
-      //         icon: "success",
-      //         title: "Thank you for the taka paisa",
-      //         showConfirmButton: false,
-      //         timer: 1500
-      //     });
-      //     // navigate('/dashboard/paymentHistory')
-      // }
+      refetch();
+      if (res.data?.paymentResult?.insertedId) {
+          Swal.fire({
+              
+              icon: "success",
+              title: "Thank you for the payment",
+              showConfirmButton: false,
+              timer: 1500
+          });
+          // navigate('/dashboard/PaymentHistory')
+      }
       }
     }
   };
