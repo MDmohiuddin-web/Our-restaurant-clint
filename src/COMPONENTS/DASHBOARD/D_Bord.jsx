@@ -105,7 +105,7 @@ const D_Bord = () => {
           <img src={logo} alt="" />
         </Link>
 
-        <ul className="space-y-2 uppercase">
+        <ul className="space-y-2 capitalize">
           {isAdmin ? <>{admin}</> : <>{common}</>}
 
           {/*  */}

@@ -6,10 +6,12 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import UseCart from "../../Hooks/UseCart";
 import profilepic from "../../assets/Resources/others/profile.png";
+import UseAdmin from "../../Hooks/UseAdmin";
 
 const Navbar = () => { 
   const { user, logOut } = useContext(AuthContext);
   const [Cart] = UseCart();
+  const [isAdmin]=UseAdmin()
 
   const logout = () => {
     logOut()
@@ -46,11 +48,25 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
-      <li className="hover:text-my_color-400">
+      {/* <li className="hover:text-my_color-400">
         <NavLink to="/DashBoard" className="hover:text-yellow-400">
           DashBoard
         </NavLink>
+      </li> */}
+      {
+        user && isAdmin && <li className="hover:text-my_color-400">
+        <NavLink to="/DashBoard/AdminHome" className="hover:text-yellow-400">
+          DashBoard
+        </NavLink>
       </li>
+      }
+      {
+        user && !isAdmin && <li className="hover:text-my_color-400">
+        <NavLink to="/DashBoard/UserHome" className="hover:text-yellow-400">
+          DashBoard
+        </NavLink>
+      </li>
+      }
 
       {user?.email ? (
         <>
@@ -67,7 +83,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar  text-white bg-black bg-opacity-30 mx-auto  fixed z-10    uppercase    ">
+    <div className="navbar  text-white bg-black bg-opacity-30 mx-auto  fixed z-10      ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
