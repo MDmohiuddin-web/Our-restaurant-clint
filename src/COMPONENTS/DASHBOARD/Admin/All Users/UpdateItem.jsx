@@ -16,7 +16,7 @@ const UpdateItem = () => {
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 
-  const { register, handleSubmit ,reset} = useForm();
+  const { register, handleSubmit } = useForm();
   const axiosSecure = UseAxiosSecure();
   const axiosPublic = UseAxiosPublic();
 
