@@ -10,7 +10,7 @@ const ManageItems = () => {
   const axiosSecure = UseAxiosSecure();
 
   const HandelDelete = (item) => {
-    console.log(item);
+    // console.log(item);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -23,7 +23,7 @@ const ManageItems = () => {
       if (result.isConfirmed) {
         //make delete request
        const res=await axiosSecure.delete(`/menu/${item._id}`);
-       console.log(res.data);
+      //  console.log(res.data);
        if (res.data.deletedCount > 0) {
         refetch()
         // refetch data for updating the data

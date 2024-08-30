@@ -30,7 +30,7 @@ const FoodCard = ({ item }) => {
       axiosSecure
         .post("/cards", CartItem)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data.insertedId) {
             toast.success(`"${name}" added to Cart successfully`);
             // refetch Cart to update the Cart items count
@@ -40,13 +40,13 @@ const FoodCard = ({ item }) => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
     } else {
       toast.error("Please login to add to Cart");
       navigate("/Login", { state: { from: location } });
     }
-    console.log(food);
+    // console.log(food);
   };
 
   //

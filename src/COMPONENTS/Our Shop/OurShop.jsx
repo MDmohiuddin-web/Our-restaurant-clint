@@ -3,6 +3,7 @@ import "react-tabs/style/react-tabs.css";
 import UseMenu from "../../Hooks/UseMenu";
 import FoodCard from "./Foodscards/FoodCard";
 
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -33,9 +34,11 @@ const OurShop = () => {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
-      return '<span className="' + className + '">' + (index + 1) + "</span>";
+      return `<span class="${className} p-4 ">${index + 1}</span>`;
     },
   };
+  
+  
 
   // Check the items into arrays of 6 items each
   const SaladItems   = checkArray(salad, 6);

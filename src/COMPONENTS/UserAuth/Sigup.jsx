@@ -70,7 +70,7 @@ const Sigup = () => {
     createUser(data.email, data.password)
       .then((result) => {
         
-        console.log(result.user);
+        // console.log(result.user);
         toast.success("signup success full");
         navigate(from, { replace: true });
         updateUserProfile(data.name, data.photoURL)
@@ -82,7 +82,7 @@ const Sigup = () => {
             };
             // console.log(userInfo);
             AxiosPublic.post("/users", userInfo).then((res) => {
-              console.log(res.data);
+              // console.log(res.data);
               if (res.data.insertedId) {
                 toast.success("user added to Database success full");
                 // console.log(res.data.insertedId);

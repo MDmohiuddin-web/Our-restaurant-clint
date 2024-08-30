@@ -61,7 +61,7 @@ const CheckOutForm = () => {
     });
 
     if (error) {
-      console.log("payment error", error);
+      // console.log("payment error", error);
       setError(error.message);
     } else {
       // console.log("payment method", paymentMethod);
@@ -83,7 +83,7 @@ const CheckOutForm = () => {
     if (confirmError) {
       //   console.log('confirm error')
     } else {
-      console.log("payment intent", paymentIntent);
+      // console.log("payment intent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
         // console.log("transaction id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
