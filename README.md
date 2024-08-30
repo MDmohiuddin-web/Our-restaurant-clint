@@ -1,4 +1,4 @@
- user id:admin@gmail.com <Br/>
+ user id: admin@gmail.com <Br/>
 password: @Admin1234 <Br/>
 this iş for admin <Br/>
 
