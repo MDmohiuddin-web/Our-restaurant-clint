@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-// import navlogo from "../assets/Resources/nav-logo.svg";
-import navlogo from "../../assets/Resources/nav-logo.svg";
+import navlogo from "../../assets/Resources/nav-logo-png.png"
+// import navlogo from "../../assets/Resources/nav-logo.svg";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useContext } from "react";
 import toast from "react-hot-toast";
@@ -110,7 +110,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/">
-          <img src={navlogo} alt="" />
+          <img src={navlogo} alt="" className="md:w-[300px] " />
         </Link>
       </div>
 

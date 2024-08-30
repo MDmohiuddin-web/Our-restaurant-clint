@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import logo from "../../assets/Resources/nav-logo.svg";
+import logo from "../../assets/Resources/nav-logo-png.png"
 import { FaHome, FaShoppingCart, FaUsers } from "react-icons/fa";
 import { MdBookmarkAdd, MdEmail } from "react-icons/md";
 import { TiThMenu } from "react-icons/ti";
@@ -102,7 +102,7 @@ const D_Bord = () => {
       <div className="m-auto w-[20%] md:h-[800px]  bg-[#D1A054] p-5">
        
         <Link to="/">
-          <img src={logo} alt="" />
+          <img src={logo} alt=""  className="md:w-[300px] " />
         </Link>
 
         <ul className="space-y-2 capitalize">
