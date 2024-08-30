@@ -28,6 +28,8 @@ import UpdateItem from "./COMPONENTS/DASHBOARD/Admin/All Users/UpdateItem";
 import Payment from "./COMPONENTS/DASHBOARD/PAYMENT/Payment";
 import PaymentHistory from "./COMPONENTS/DASHBOARD/PaymentHistory/PaymentHistory";
 import UserHome from "./COMPONENTS/DASHBOARD/User/UserHome";
+import Reservation from "./COMPONENTS/DASHBOARD/User/Reservation";
+import AddReview from "./COMPONENTS/DASHBOARD/User/AddReview";
 
 const queryClient = new QueryClient();
 
@@ -86,8 +88,15 @@ const router = createBrowserRouter([
         element:<PrivateRouts><UserHome></UserHome></PrivateRouts>
       },
       {
+        path:'/DashBoard/AddReview',
+        element:<PrivateRouts><AddReview></AddReview></PrivateRouts>
+      },
+      {
         path:'/DashBoard/Payment',
-        element:<Payment></Payment>
+        element:<PrivateRouts><Payment></Payment></PrivateRouts>
+      },{
+        path:'/DashBoard/Reservation',
+        element:<PrivateRouts><Reservation></Reservation></PrivateRouts>
       },{
         path:'/DashBoard/PaymentHistory',
         element:<PrivateRouts><PaymentHistory></PaymentHistory></PrivateRouts>

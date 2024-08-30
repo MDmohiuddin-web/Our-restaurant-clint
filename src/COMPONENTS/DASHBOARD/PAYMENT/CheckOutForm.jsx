@@ -19,15 +19,15 @@ const CheckOutForm = () => {
    *
    */
   const axiosSecure = UseAxiosSecure();
-  const [transactionId, setTransactionId] = useState('');
+  const [transactionId, setTransactionId] = useState("");
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  const [Cart,refetch] = UseCart();
+  const [Cart, refetch] = UseCart();
   const totalPrice = Cart.reduce((total, item) => total + item.price, 0);
   const stripe = useStripe();
   const elements = useElements();
   const { user } = UseAuth();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (totalPrice > 0) {
@@ -64,7 +64,7 @@ const CheckOutForm = () => {
       console.log("payment error", error);
       setError(error.message);
     } else {
-      console.log("payment method", paymentMethod);
+      // console.log("payment method", paymentMethod);
       setError("");
     }
 
@@ -81,11 +81,11 @@ const CheckOutForm = () => {
       });
 
     if (confirmError) {
-    //   console.log('confirm error')
+      //   console.log('confirm error')
     } else {
-      console.log('payment intent', paymentIntent)
+      console.log("payment intent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
-        console.log('transaction id', paymentIntent.id);
+        // console.log("transaction id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
 
         // now save the payment in the database
@@ -99,19 +99,18 @@ const CheckOutForm = () => {
           status: "pending",
         };
 
-        const res = await axiosSecure.post('/payments', payment);
-      console.log('payment saved', res.data);
-      refetch();
-      if (res.data?.paymentResult?.insertedId) {
+        const res = await axiosSecure.post("/payments", payment);
+        // console.log("payment saved", res.data);
+        refetch();
+        if (res.data?.paymentResult?.insertedId) {
           Swal.fire({
-              
-              icon: "success",
-              title: "Thank you for the payment",
-              showConfirmButton: false,
-              timer: 1500
+            icon: "success",
+            title: "Thank you for the payment",
+            showConfirmButton: false,
+            timer: 1500,
           });
-          navigate('/DashBoard/PaymentHistory')
-      }
+          navigate("/DashBoard/PaymentHistory");
+        }
       }
     }
   };
@@ -144,10 +143,7 @@ const CheckOutForm = () => {
         </button>
         <p className="text-red-600">{error}</p>
         {transactionId && (
-          <p className="text-green-600">
-            
-            Your transaction id: {transactionId}
-          </p>
+          <p className="text-green-600">Your transaction id: {transactionId}</p>
         )}
       </div>
     </form>

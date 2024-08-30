@@ -29,7 +29,7 @@ const D_Bord = () => {
       </li>
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
         <FaCalendar></FaCalendar>
-        <NavLink to="/DashBoard/Cart">Reservation</NavLink>
+        <NavLink to="/DashBoard/Reservation">Reservation</NavLink>
       </li>
 
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
@@ -45,7 +45,7 @@ const D_Bord = () => {
 
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
         <FaMessage></FaMessage>
-        <NavLink to="/DashBoard/Cart">Add Review</NavLink>
+        <NavLink to="/DashBoard/AddReview">Add Review</NavLink>
       </li>
 
       <li className="flex items-center  gap-2 hover:text-white duration-300 text-xl">
@@ -99,7 +99,7 @@ const D_Bord = () => {
   return (
     <div className="flex capitalize">
       {/* sidebar */}
-      <div className="m-auto w-[20%] min-h-svh  bg-[#D1A054] p-5">
+      <div className="m-auto w-[20%] md:h-[800px]  bg-[#D1A054] p-5">
        
         <Link to="/">
           <img src={logo} alt="" />
