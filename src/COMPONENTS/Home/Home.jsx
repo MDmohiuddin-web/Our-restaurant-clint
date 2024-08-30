@@ -15,7 +15,7 @@ const Home = () => {
       
       <Sy></Sy>
 
-      <div className="md:w-4/5 m-auto my-10 bg md:h-96 flex justify-center items-center rounded-lg p-10">
+      <div className="md:w-4/5 m-auto my-10 bg  md:h-96 flex justify-center items-center rounded-lg p-10">
         <div className="bg-white md:w-4/5 p-10 rounded-lg">
           <h3 className="text-center text-2xl my-5 ">Bistro Boss</h3>
           <p>
